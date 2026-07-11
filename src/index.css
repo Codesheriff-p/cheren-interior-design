@@ -1,0 +1,158 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #0D0C0A;
+  --color-surface: #161412;
+  --color-surface-2: #1E1C18;
+  --color-border: #2A2620;
+  --color-text: #F2EDE4;
+  --color-text-muted: #8A8078;
+  --color-gold: #C9A96E;
+  --color-gold-dark: #956F3A;
+  --color-gold-light: #DEC898;
+
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+::selection {
+  background-color: var(--color-gold);
+  color: var(--color-bg);
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-gold-dark);
+  border-radius: 3px;
+}
+
+/* Fonts */
+.font-display {
+  font-family: var(--font-display);
+}
+
+/* Gold underline link */
+.link-gold {
+  position: relative;
+  color: var(--color-text-muted);
+  transition: color 0.3s ease;
+}
+.link-gold::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--color-gold);
+  transition: width 0.4s ease;
+}
+.link-gold:hover {
+  color: var(--color-gold);
+}
+.link-gold:hover::after {
+  width: 100%;
+}
+
+/* Image overlay fade */
+.img-overlay {
+  position: relative;
+  overflow: hidden;
+}
+.img-overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(13,12,10,0.7) 0%, transparent 60%);
+  pointer-events: none;
+}
+.img-overlay img {
+  transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.img-overlay:hover img {
+  transform: scale(1.06);
+}
+
+/* Gold line divider */
+.gold-line {
+  width: 40px;
+  height: 1px;
+  background: var(--color-gold);
+}
+
+/* Marquee animation */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  animation: marquee 20s linear infinite;
+  white-space: nowrap;
+  display: flex;
+}
+
+/* Clip reveal animation (GSAP targets this) */
+.clip-reveal {
+  clip-path: inset(0 100% 0 0);
+}
+
+/* Input styles */
+.form-input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--color-border);
+  padding: 12px 0;
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+.form-input::placeholder {
+  color: var(--color-text-muted);
+}
+.form-input:focus {
+  border-bottom-color: var(--color-gold);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .marquee-track {
+    animation: none;
+  }
+}
