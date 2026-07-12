@@ -181,7 +181,7 @@ export default function Services() {
                 fontSize: "15px",
                 lineHeight: 1.8,
                 color: "var(--color-text-muted)",
-                maxWidth: "400px",
+                maxWidth: "900px",
               }}
             >
               Every home has a story. We help you write it with thoughtful

@@ -153,7 +153,7 @@ export default function Process() {
                 fontSize: "15px",
                 lineHeight: 1.8,
                 color: "var(--color-text-muted)",
-                maxWidth: "400px",
+                maxWidth: "700px",
               }}
             >
               A transparent, collaborative process designed to deliver

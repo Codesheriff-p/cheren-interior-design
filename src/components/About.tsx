@@ -6,10 +6,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const STATS = [
-  { value: 200, suffix: "+", label: "Projects Completed" },
-  { value: 8, suffix: " yrs", label: "Years of Experience" },
-  { value: 98, suffix: "%", label: "Client Satisfaction" },
-  { value: 12, suffix: "", label: "Design Awards" },
+  { value: 10, suffix: "+", label: "Projects Completed" },
+  { value: 1, suffix: " year", label: "Years of Experience" },
 ];
 
 export default function About() {
@@ -179,10 +177,8 @@ export default function About() {
               color: "var(--color-text-muted)",
             }}
           >
-            We are Prydumano Design — a team of interior designers based in
-            Lviv, Ukraine. Since 2016, we've been shaping homes and commercial
-            spaces that feel as good as they look. Every project begins with
-            listening.
+            At Cheren's Interior we've been shaping homes and commercial spaces
+            that feel as good as they look. Every project begins with listening.
           </p>
           <p
             style={{

@@ -1,21 +1,23 @@
 @import "tailwindcss";
 
 @theme {
-  --color-bg: #0D0C0A;
+  --color-bg: #0d0c0a;
   --color-surface: #161412;
-  --color-surface-2: #1E1C18;
-  --color-border: #2A2620;
-  --color-text: #F2EDE4;
-  --color-text-muted: #8A8078;
-  --color-gold: #C9A96E;
-  --color-gold-dark: #956F3A;
-  --color-gold-light: #DEC898;
+  --color-surface-2: #1e1c18;
+  --color-border: #2a2620;
+  --color-text: #f2ede4;
+  --color-text-muted: #8a8078;
+  --color-gold: #c9a96e;
+  --color-gold-dark: #956f3a;
+  --color-gold-light: #dec898;
 
-  --font-display: 'Cormorant Garamond', Georgia, serif;
-  --font-body: 'DM Sans', system-ui, sans-serif;
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-body: "DM Sans", system-ui, sans-serif;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -66,7 +68,7 @@ body {
   transition: color 0.3s ease;
 }
 .link-gold::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -2px;
   left: 0;
@@ -79,7 +81,7 @@ body {
   color: var(--color-gold);
 }
 .link-gold:hover::after {
-  width: 100%;
+  width: 50%;
 }
 
 /* Image overlay fade */
@@ -88,10 +90,14 @@ body {
   overflow: hidden;
 }
 .img-overlay::after {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(13,12,10,0.7) 0%, transparent 60%);
+  background: linear-gradient(
+    to top,
+    rgba(13, 12, 10, 0.7) 0%,
+    transparent 60%
+  );
   pointer-events: none;
 }
 .img-overlay img {
@@ -110,8 +116,12 @@ body {
 
 /* Marquee animation */
 @keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 .marquee-track {
@@ -147,7 +157,9 @@ body {
 
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;

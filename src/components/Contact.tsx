@@ -2,13 +2,41 @@ import { useRef, useState } from "react";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import emailjs from "@emailjs/browser";
 
 gsap.registerPlugin(ScrollTrigger);
 
+// ─── Replace these three values with your EmailJS credentials ───────────────
+//  Dashboard → https://dashboard.emailjs.com
+//  Service ID  : Email Services → your service → Service ID
+//  Template ID : Email Templates → your template → Template ID
+//  Public Key  : Account → General → Public Key
+const EMAILJS_SERVICE_ID = "service_e771xa9";
+const EMAILJS_TEMPLATE_ID = "template_yy2xy3i";
+const EMAILJS_PUBLIC_KEY = "IxOvs1RP2asNGV7t3";
+// ────────────────────────────────────────────────────────────────────────────
+//  In your EmailJS template, use these variables:
+//    {{from_name}}    → sender's name
+//    {{from_email}}   → sender's email
+//    {{phone}}        → phone number
+//    {{service}}      → selected service
+//    {{message}}      → project description
+// ────────────────────────────────────────────────────────────────────────────
+
+type FormState = {
+  name: string;
+  email: string;
+  phone: string;
+  message: string;
+  service: string;
+};
+
+type Status = "idle" | "sending" | "sent" | "error";
+
 export default function Contact() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [submitted, setSubmitted] = useState(false);
-  const [form, setForm] = useState({
+  const [status, setStatus] = useState<Status>("idle");
+  const [form, setForm] = useState<FormState>({
     name: "",
     email: "",
     phone: "",
@@ -46,18 +74,37 @@ export default function Contact() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // In production: send to your API endpoint
-    setSubmitted(true);
+    setStatus("sending");
+
+    emailjs
+      .send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          from_name: form.name,
+          from_email: form.email,
+          phone: form.phone,
+          service: form.service,
+          message: form.message,
+        },
+        EMAILJS_PUBLIC_KEY,
+      )
+      .then(() => {
+        setStatus("sent");
+        setForm({ name: "", email: "", phone: "", message: "", service: "" });
+      })
+      .catch(() => {
+        setStatus("error");
+      });
   };
+
+  const isSending = status === "sending";
 
   return (
     <section
       id="contact"
       ref={containerRef}
-      style={{
-        padding: "120px 48px",
-        background: "var(--color-surface)",
-      }}
+      style={{ padding: "120px 48px", background: "var(--color-surface)" }}
     >
       <div
         style={{
@@ -69,7 +116,7 @@ export default function Contact() {
           alignItems: "start",
         }}
       >
-        {/* Left — Info */}
+        {/* ── Left — Info ───────────────────────────────────────────── */}
         <div
           className="contact-left"
           style={{
@@ -161,7 +208,7 @@ export default function Contact() {
               },
               {
                 label: "Phone",
-                value: "+380 32 000 0000",
+                value: "+40 766 334 491",
                 icon: (
                   <svg
                     width="18"
@@ -177,7 +224,7 @@ export default function Contact() {
               },
               {
                 label: "Studio",
-                value: "Lviv, Ukraine",
+                value: "Bucharest",
                 icon: (
                   <svg
                     width="18"
@@ -238,7 +285,7 @@ export default function Contact() {
             ))}
           </div>
 
-          {/* Background image accent */}
+          {/* Image accent */}
           <div
             style={{
               position: "relative",
@@ -285,9 +332,10 @@ export default function Contact() {
           </div>
         </div>
 
-        {/* Right — Form */}
+        {/* ── Right — Form ──────────────────────────────────────────── */}
         <div className="contact-right" style={{ opacity: 0 }}>
-          {submitted ? (
+          {/* Success state */}
+          {status === "sent" ? (
             <div
               style={{
                 border: "1px solid rgba(201,169,110,0.3)",
@@ -334,6 +382,35 @@ export default function Contact() {
                 Thank you for reaching out. We'll review your project and get
                 back to you within 24 hours.
               </p>
+              <button
+                onClick={() => setStatus("idle")}
+                style={{
+                  marginTop: "8px",
+                  background: "none",
+                  border: "1px solid var(--color-border)",
+                  padding: "10px 28px",
+                  color: "var(--color-text-muted)",
+                  fontFamily: "var(--font-body)",
+                  fontSize: "12px",
+                  letterSpacing: "0.1em",
+                  cursor: "pointer",
+                  transition: "all 0.3s",
+                }}
+                onMouseEnter={(e) => {
+                  (e.currentTarget as HTMLButtonElement).style.borderColor =
+                    "var(--color-gold)";
+                  (e.currentTarget as HTMLButtonElement).style.color =
+                    "var(--color-gold)";
+                }}
+                onMouseLeave={(e) => {
+                  (e.currentTarget as HTMLButtonElement).style.borderColor =
+                    "var(--color-border)";
+                  (e.currentTarget as HTMLButtonElement).style.color =
+                    "var(--color-text-muted)";
+                }}
+              >
+                Send Another
+              </button>
             </div>
           ) : (
             <form
@@ -446,7 +523,7 @@ export default function Contact() {
                   <input
                     className="form-input"
                     type="tel"
-                    placeholder="+380 xx xxx xxxx"
+                    placeholder="+40 xxx xxx xxx"
                     value={form.phone}
                     onChange={(e) =>
                       setForm({ ...form, phone: e.target.value })
@@ -482,16 +559,28 @@ export default function Contact() {
                     <option value="" style={{ background: "#161412" }}>
                       Select a service
                     </option>
-                    <option value="interior" style={{ background: "#161412" }}>
+                    <option
+                      value="Interior Design"
+                      style={{ background: "#161412" }}
+                    >
                       Interior Design
                     </option>
-                    <option value="3d" style={{ background: "#161412" }}>
+                    <option
+                      value="3D Visualization"
+                      style={{ background: "#161412" }}
+                    >
                       3D Visualization
                     </option>
-                    <option value="furniture" style={{ background: "#161412" }}>
+                    <option
+                      value="Furniture Selection"
+                      style={{ background: "#161412" }}
+                    >
                       Furniture Selection
                     </option>
-                    <option value="turnkey" style={{ background: "#161412" }}>
+                    <option
+                      value="Turnkey Solution"
+                      style={{ background: "#161412" }}
+                    >
                       Turnkey Solution
                     </option>
                   </select>
@@ -525,36 +614,85 @@ export default function Contact() {
                 />
               </div>
 
+              {/* Error banner */}
+              {status === "error" && (
+                <p
+                  style={{
+                    fontFamily: "var(--font-body)",
+                    fontSize: "13px",
+                    color: "#e07070",
+                    padding: "12px 16px",
+                    border: "1px solid rgba(224,112,112,0.3)",
+                    lineHeight: 1.5,
+                  }}
+                >
+                  Something went wrong. Please check your connection and try
+                  again, or email us directly at hello@prydumano.design
+                </p>
+              )}
+
               <button
                 type="submit"
+                disabled={isSending}
                 style={{
                   padding: "18px 48px",
-                  background: "var(--color-gold)",
+                  background: isSending
+                    ? "var(--color-gold-dark)"
+                    : "var(--color-gold)",
                   border: "none",
                   color: "var(--color-bg)",
                   fontFamily: "var(--font-body)",
                   fontSize: "12px",
                   letterSpacing: "0.14em",
                   textTransform: "uppercase",
-                  cursor: "pointer",
+                  cursor: isSending ? "not-allowed" : "pointer",
                   fontWeight: 500,
                   alignSelf: "flex-start",
                   transition: "all 0.3s ease",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "10px",
+                  opacity: isSending ? 0.8 : 1,
                 }}
                 onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLButtonElement).style.background =
-                    "var(--color-gold-light)";
-                  (e.currentTarget as HTMLButtonElement).style.transform =
-                    "translateY(-2px)";
+                  if (!isSending) {
+                    (e.currentTarget as HTMLButtonElement).style.background =
+                      "var(--color-gold-light)";
+                    (e.currentTarget as HTMLButtonElement).style.transform =
+                      "translateY(-2px)";
+                  }
                 }}
                 onMouseLeave={(e) => {
                   (e.currentTarget as HTMLButtonElement).style.background =
-                    "var(--color-gold)";
+                    isSending ? "var(--color-gold-dark)" : "var(--color-gold)";
                   (e.currentTarget as HTMLButtonElement).style.transform =
                     "translateY(0)";
                 }}
               >
-                Send Message →
+                {isSending ? (
+                  <>
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 14 14"
+                      fill="none"
+                      style={{ animation: "spin 1s linear infinite" }}
+                    >
+                      <circle
+                        cx="7"
+                        cy="7"
+                        r="6"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                        strokeDasharray="20"
+                        strokeDashoffset="10"
+                      />
+                    </svg>
+                    Sending…
+                  </>
+                ) : (
+                  "Send Message →"
+                )}
               </button>
             </form>
           )}
@@ -562,16 +700,12 @@ export default function Contact() {
       </div>
 
       <style>{`
+        @keyframes spin { to { transform: rotate(360deg); } }
         @media (max-width: 900px) {
           #contact { padding: 80px 24px !important; }
-          #contact > div {
-            grid-template-columns: 1fr !important;
-            gap: 48px !important;
-          }
+          #contact > div { grid-template-columns: 1fr !important; gap: 48px !important; }
           .contact-right form > div:nth-child(2),
-          .contact-right form > div:nth-child(3) {
-            grid-template-columns: 1fr !important;
-          }
+          .contact-right form > div:nth-child(3) { grid-template-columns: 1fr !important; }
         }
       `}</style>
     </section>

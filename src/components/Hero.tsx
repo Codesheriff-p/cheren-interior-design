@@ -177,7 +177,7 @@ export default function Hero() {
             fontSize: "16px",
             lineHeight: 1.8,
             color: "var(--color-text-muted)",
-            maxWidth: "420px",
+            maxWidth: "480px",
             opacity: 0,
           }}
         >
