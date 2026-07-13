@@ -81,7 +81,29 @@ body {
   color: var(--color-gold);
 }
 .link-gold:hover::after {
-  width: 50%;
+  width: 100%;
+}
+
+.link-gold-2 {
+  position: relative;
+  color: var(--color-text-muted);
+  transition: color 0.3s ease;
+}
+.link-gold-2::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--color-gold);
+  transition: width 0.4s ease;
+}
+.link-gold-2:hover {
+  color: var(--color-gold);
+}
+.link-gold-2:hover::after {
+  width: 40%;
 }
 
 /* Image overlay fade */

@@ -92,7 +92,7 @@ export default function Footer() {
               <a
                 key={link}
                 href="#"
-                className="link-gold"
+                className="link-gold-2"
                 style={{
                   fontFamily: "var(--font-body)",
                   fontSize: "13px",
