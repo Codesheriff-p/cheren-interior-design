@@ -62,24 +62,6 @@ const SERVICES = [
       </svg>
     ),
   },
-  {
-    num: "04",
-    title: "Turnkey Solutions",
-    desc: "Complete project management from design brief to final handover. We coordinate contractors, supervise works, and manage every detail.",
-    icon: (
-      <svg
-        width="32"
-        height="32"
-        viewBox="0 0 32 32"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.2"
-      >
-        <path d="M16 3a13 13 0 100 26A13 13 0 0016 3z" />
-        <path d="M16 9v7l5 3" />
-      </svg>
-    ),
-  },
 ];
 
 export default function Services() {

@@ -302,7 +302,7 @@ export default function Portfolio() {
                 </div>
 
                 {/* Always-visible overlay for touch */}
-                <div
+                {/* <div
                   style={{
                     position: "absolute",
                     bottom: 0,
@@ -327,14 +327,14 @@ export default function Portfolio() {
                   <p
                     style={{
                       fontFamily: "var(--font-display)",
-                      fontSize: "16px",
+                      fontSize: "60px",
                       color: "var(--color-text)",
                       opacity: 0.9,
                     }}
                   >
                     {project.title}
                   </p>
-                </div>
+                </div> */}
               </div>
             );
           })}

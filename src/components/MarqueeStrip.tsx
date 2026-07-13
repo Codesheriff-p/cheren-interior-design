@@ -3,7 +3,7 @@ import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 
 const TEXT =
-  "PRYDUMANO DESIGN  •  INTERIOR SPACES  •  COMFORT BY DESIGN  •  LVIV STUDIO  •  CRAFTED WITH CARE  •  ";
+  "CHEREN'S INTERIOR  •  INTERIOR SPACES  •  COMFORT BY DESIGN  •  LVIV STUDIO  •  CRAFTED WITH CARE  •  ";
 
 const spanStyle: React.CSSProperties = {
   fontFamily: "var(--font-display)",

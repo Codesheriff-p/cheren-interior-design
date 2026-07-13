@@ -191,7 +191,7 @@ export default function Contact() {
             {[
               {
                 label: "Email",
-                value: "hello@prydumano.design",
+                value: "chereninterior@gmail.com",
                 icon: (
                   <svg
                     width="18"
