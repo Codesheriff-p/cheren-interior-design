@@ -2,26 +2,12 @@ import { useRef, useState } from "react";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import emailjs from "@emailjs/browser";
 
 gsap.registerPlugin(ScrollTrigger);
 
-// ─── Replace these three values with your EmailJS credentials ───────────────
-//  Dashboard → https://dashboard.emailjs.com
-//  Service ID  : Email Services → your service → Service ID
-//  Template ID : Email Templates → your template → Template ID
-//  Public Key  : Account → General → Public Key
-const EMAILJS_SERVICE_ID = "service_e771xa9";
-const EMAILJS_TEMPLATE_ID = "template_yy2xy3i";
-const EMAILJS_PUBLIC_KEY = "IxOvs1RP2asNGV7t3";
-// ────────────────────────────────────────────────────────────────────────────
-//  In your EmailJS template, use these variables:
-//    {{from_name}}    → sender's name
-//    {{from_email}}   → sender's email
-//    {{phone}}        → phone number
-//    {{service}}      → selected service
-//    {{message}}      → project description
-// ────────────────────────────────────────────────────────────────────────────
+// ─── Web3Forms Access Key ─────────────────────────────────────
+const WEB3FORMS_ACCESS_KEY = "90ea91f9-d1bb-43d6-9b30-63cc400edce7";
+// ──────────────────────────────────────────────────────────────
 
 type FormState = {
   name: string;
@@ -72,30 +58,41 @@ export default function Contact() {
     { scope: containerRef },
   );
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("sending");
 
-    emailjs
-      .send(
-        EMAILJS_SERVICE_ID,
-        EMAILJS_TEMPLATE_ID,
-        {
-          from_name: form.name,
-          from_email: form.email,
-          phone: form.phone,
-          service: form.service,
-          message: form.message,
+    try {
+      // Build payload for Web3Forms
+      const payload = {
+        access_key: WEB3FORMS_ACCESS_KEY,
+        name: form.name,
+        email: form.email,
+        phone: form.phone,
+        service: form.service,
+        message: form.message,
+      };
+
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
         },
-        EMAILJS_PUBLIC_KEY,
-      )
-      .then(() => {
+        body: JSON.stringify(payload),
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
         setStatus("sent");
         setForm({ name: "", email: "", phone: "", message: "", service: "" });
-      })
-      .catch(() => {
+      } else {
         setStatus("error");
-      });
+      }
+    } catch {
+      setStatus("error");
+    }
   };
 
   const isSending = status === "sending";
@@ -627,7 +624,13 @@ export default function Contact() {
                   }}
                 >
                   Something went wrong. Please check your connection and try
-                  again, or email us directly at hello@prydumano.design
+                  again, or email us directly at{" "}
+                  <a
+                    href="mailto:hello@prydumano.design"
+                    style={{ color: "#e07070", textDecoration: "underline" }}
+                  >
+                    hello@prydumano.design
+                  </a>
                 </p>
               )}
 
