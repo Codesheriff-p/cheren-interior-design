@@ -12,7 +12,7 @@ const PROJECTS = [
     id: 1,
     src: "https://images.unsplash.com/photo-1738168279272-c08d6dd22002?w=800&q=80",
     alt: "Minimalist living room",
-    title: "Apartment on Lychakivska",
+    title: "Apartment on Pipera",
     type: "Residential · 80 m²",
   },
   {

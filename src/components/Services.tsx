@@ -253,7 +253,7 @@ export default function Services() {
                 {service.desc}
               </p>
 
-              <div
+              {/* <div
                 style={{
                   display: "flex",
                   alignItems: "center",
@@ -275,7 +275,7 @@ export default function Services() {
                     strokeWidth="1.2"
                   />
                 </svg>
-              </div>
+              </div> */}
             </div>
           ))}
         </div>

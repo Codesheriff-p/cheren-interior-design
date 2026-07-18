@@ -9,7 +9,7 @@ const TESTIMONIALS = [
   {
     quote:
       "Cheren's Interior transformed our apartment completely. They listened to everything we wanted and delivered a home that feels like us — only better. The 3D renders were spot on; the real thing was even more beautiful.",
-    name: "Olena & Mykola Kovalenko",
+    name: "OMatei Cernat",
     project: "Apartment redesign, 95 m²",
     avatar: "OM",
   },
@@ -17,22 +17,22 @@ const TESTIMONIALS = [
     quote:
       "Working with this studio was effortless. They handled all the contractors, kept us updated, and finished two weeks ahead of schedule. Our kitchen and living space is now the heart of our home.",
     name: "Sofia Melnyk",
-    project: "Open-plan kitchen renovation",
+    project: "Ana Voinea",
     avatar: "SM",
   },
   {
     quote:
       "I had a very specific vision and limited budget. The team found creative solutions at every turn. The result exceeds what I imagined was possible. Highly recommend for anyone who wants real expertise.",
-    name: "Andriy Lysenko",
+    name: "Bianca Rădulescu",
     project: "Studio apartment, 42 m²",
-    avatar: "AL",
+    avatar: "BR",
   },
   {
     quote:
       "From the first meeting to final handover, Cheren\'s Interior was professional, creative, and a pleasure to work with. Our children's room is magical. They even sourced furniture we thought was out of our range.",
-    name: "Iryna Shevchenko",
+    name: "David Munteanu",
     project: "Children's room & master bedroom",
-    avatar: "IS",
+    avatar: "DM",
   },
 ];
 
