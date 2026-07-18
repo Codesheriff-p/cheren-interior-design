@@ -5,40 +5,53 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const TESTIMONIALS = [
+type Testimonial = {
+  quote: string;
+  name: string;
+  project: string;
+  avatar: string;
+  initials?: string;
+};
+
+const TESTIMONIALS: Testimonial[] = [
   {
     quote:
       "Cheren's Interior transformed our apartment completely. They listened to everything we wanted and delivered a home that feels like us — only better. The 3D renders were spot on; the real thing was even more beautiful.",
-    name: "OMatei Cernat",
+    name: "Matei Cernat",
     project: "Apartment redesign, 95 m²",
-    avatar: "https://unsplash.com/photos/a-young-man-wearing-glasses-standing-in-front-of-a-mountain-MSepzbKFz10",
+    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop",
+    initials: "MC",
   },
   {
     quote:
       "Working with this studio was effortless. They handled all the contractors, kept us updated, and finished two weeks ahead of schedule. Our kitchen and living space is now the heart of our home.",
     name: "Ana Voinea",
     project: "Open-plan kitchen renovation",
-    avatar: "https://unsplash.com/photos/closeup-photography-of-woman-smiling-mEZ3PoFGs_k",
+    avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop",
+    initials: "AV",
   },
   {
     quote:
       "I had a very specific vision and limited budget. The team found creative solutions at every turn. The result exceeds what I imagined was possible. Highly recommend for anyone who wants real expertise.",
     name: "Bianca Rădulescu",
     project: "Studio apartment, 42 m²",
-    avatar: "https://unsplash.com/photos/a-young-girl-with-long-hair-wearing-a-white-t-shirt-HaNi1rsZ6Nc",
+    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop",
+    initials: "BR",
   },
   {
     quote:
-      "From the first meeting to final handover, Cheren\'s Interior was professional, creative, and a pleasure to work with. Our children's room is magical. They even sourced furniture we thought was out of our range.",
+      "From the first meeting to final handover, Cheren's Interior was professional, creative, and a pleasure to work with. Our children's room is magical. They even sourced furniture we thought was out of our range.",
     name: "David Munteanu",
     project: "Children's room & master bedroom",
-    avatar: "https://unsplash.com/photos/man-in-white-crew-neck-shirt-wearing-black-framed-eyeglasses-C8Ta0gwPbQg",
+    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop",
+    initials: "DM",
   },
 ];
 
 export default function Testimonials() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
+  const [imageError, setImageError] = useState<Set<number>>(new Set());
 
   useGSAP(
     () => {
@@ -209,27 +222,37 @@ export default function Testimonials() {
                     width: "40px",
                     height: "40px",
                     borderRadius: "50%",
-                    background: "rgba(201,169,110,0.15)",
+                    background: "rgba(201,169,110,0.2)",
                     border: "1px solid rgba(201,169,110,0.3)",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     fontFamily: "var(--font-display)",
-                    fontSize: "14px",
+                    fontSize: "13px",
+                    fontWeight: 600,
                     color: "var(--color-gold)",
                     flexShrink: 0,
+                    overflow: "hidden",
+                    position: "relative",
                   }}
                 >
-                  <img
-                    src={t.avatar}
-                    alt={t.name}
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "cover",
-                      borderRadius: "50%",
-                    }}
-                  />
+                  {!imageError.has(i) && (
+                    <img
+                      src={t.avatar}
+                      alt={t.name}
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                        borderRadius: "50%",
+                      }}
+                      onError={() => {
+                        setImageError((prev) => new Set(prev).add(i));
+                      }}
+                      loading="lazy"
+                    />
+                  )}
+                  {imageError.has(i) && <span>{t.initials}</span>}
                 </div>
                 <div>
                   <p
