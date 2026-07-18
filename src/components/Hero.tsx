@@ -2,8 +2,6 @@ import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 
-gsap.registerPlugin();
-
 const HERO_IMAGES = [
   {
     src: "https://images.unsplash.com/photo-1738168362059-44a0b8a80b39?w=600&q=80",
