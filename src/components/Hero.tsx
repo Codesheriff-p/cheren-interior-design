@@ -392,6 +392,16 @@ export default function Hero() {
       {/* Scroll cue */}
       <div
         className="hero-scroll-cue"
+        role="button"
+        tabIndex={0}
+        onClick={() =>
+          document.querySelector("#portfolio")?.scrollIntoView({ behavior: "smooth" })
+        }
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            document.querySelector("#portfolio")?.scrollIntoView({ behavior: "smooth" });
+          }
+        }}
         style={{
           position: "absolute",
           bottom: "40px",
@@ -400,6 +410,7 @@ export default function Hero() {
           alignItems: "center",
           gap: "12px",
           opacity: 0,
+          cursor: "pointer",
         }}
       >
         <div
