@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
+import { useTranslation } from "react-i18next";
 
 const HERO_IMAGES = [
   {
@@ -19,6 +20,8 @@ const HERO_IMAGES = [
 
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const { t } = useTranslation();
+  const titleWords = t("hero.title").split(" ");
 
   useGSAP(
     () => {
@@ -141,23 +144,23 @@ export default function Hero() {
             color: "var(--color-text)",
           }}
         >
-          {["We", "Create", "Spaces", "of", "Comfort."].map((word, i, arr) => (
+          {titleWords.map((word, i) => (
             <span
               key={i}
               style={{
                 display: "inline-block",
                 overflow: "hidden",
                 verticalAlign: "bottom",
-                marginRight: i < arr.length - 1 ? "0.25em" : 0,
+                marginRight: i < titleWords.length - 1 ? "0.25em" : 0,
               }}
             >
               <span
                 className="hero-word"
                 style={{
                   display: "inline-block",
-                  fontStyle: word === "Comfort." ? "italic" : "normal",
+                  fontStyle: word.endsWith(".") ? "italic" : "normal",
                   color:
-                    word === "Comfort."
+                    word.endsWith(".")
                       ? "var(--color-gold)"
                       : "var(--color-text)",
                 }}
@@ -179,9 +182,7 @@ export default function Hero() {
             opacity: 0,
           }}
         >
-          We are a team of interior designers who transform apartments and
-          houses into thoughtful, beautiful environments — tailored exactly to
-          how you live.
+          {t("hero.subtitle")}
         </p>
 
         <div
@@ -225,7 +226,7 @@ export default function Hero() {
                 "translateY(0)";
             }}
           >
-            View Our Work
+            {t("hero.cta")}
           </button>
           <button
             onClick={() =>

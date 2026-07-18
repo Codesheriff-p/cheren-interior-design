@@ -1,6 +1,7 @@
 import { useRef, useEffect, useState } from "react";
 import { gsap } from "gsap";
 import logo from "../assets/logo.png";
+import LangSwitcher from "./LangSwitcher";
 
 const NAV_LINKS = [
   { label: "About", href: "#about" },
@@ -109,6 +110,9 @@ export default function Navbar() {
               </button>
             </li>
           ))}
+          <li>
+            <LangSwitcher />
+          </li>
           <li>
             <button
               onClick={() => handleNavClick("#contact")}
