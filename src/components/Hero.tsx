@@ -31,13 +31,16 @@ export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
   const { t } = useTranslation();
   const titleWords = t("hero.title").split(" ");
+  const isMobile =
+    typeof window !== "undefined" &&
+    window.matchMedia("(max-width: 767px)").matches;
   const prefersReducedMotion =
     typeof window !== "undefined" &&
     window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   useGSAP(
     () => {
-      if (prefersReducedMotion) {
+      if (prefersReducedMotion || isMobile) {
         gsap.set(
           ".hero-tag, .hero-sub, .hero-cta, .hero-img-1, .hero-img-2, .hero-img-3, .hero-scroll-cue, .hero-word",
           { opacity: 1, y: 0 },
@@ -105,11 +108,11 @@ export default function Hero() {
         id="hero"
         style={{
           minHeight: "100vh",
-          padding: "0 48px",
-          paddingTop: "120px",
+          padding: isMobile ? "0 20px" : "0 48px",
+          paddingTop: isMobile ? "96px" : "120px",
           display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gap: "60px",
+          gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
+          gap: isMobile ? "28px" : "60px",
           alignItems: "center",
           position: "relative",
           overflow: "hidden",
@@ -122,8 +125,8 @@ export default function Hero() {
           style={{
             display: "flex",
             flexDirection: "column",
-            gap: "32px",
-            paddingTop: "20px",
+            gap: isMobile ? "24px" : "32px",
+            paddingTop: isMobile ? "0" : "20px",
           }}
         >
           <div
@@ -159,7 +162,9 @@ export default function Hero() {
           <h1
             style={{
               fontFamily: "var(--font-display)",
-              fontSize: "clamp(48px, 5.5vw, 80px)",
+              fontSize: isMobile
+                ? "clamp(36px, 10vw, 48px)"
+                : "clamp(48px, 5.5vw, 80px)",
               fontWeight: 400,
               lineHeight: 1.15,
               letterSpacing: "-0.01em",
@@ -196,10 +201,10 @@ export default function Hero() {
             className="hero-sub"
             style={{
               fontFamily: "var(--font-body)",
-              fontSize: "16px",
+              fontSize: isMobile ? "15px" : "16px",
               lineHeight: 1.8,
               color: "var(--color-text-muted)",
-              maxWidth: "480px",
+              maxWidth: isMobile ? "none" : "480px",
               opacity: 0,
             }}
           >
@@ -210,8 +215,9 @@ export default function Hero() {
             className="hero-cta"
             style={{
               display: "flex",
-              gap: "20px",
-              alignItems: "center",
+              gap: isMobile ? "12px" : "20px",
+              alignItems: isMobile ? "stretch" : "center",
+              flexDirection: isMobile ? "column" : "row",
               opacity: 0,
             }}
           >
@@ -222,7 +228,7 @@ export default function Hero() {
                   ?.scrollIntoView({ behavior: "smooth" })
               }
               style={{
-                padding: "16px 40px",
+                padding: isMobile ? "14px 24px" : "16px 40px",
                 background: "var(--color-gold)",
                 border: "none",
                 color: "var(--color-bg)",
@@ -267,6 +273,7 @@ export default function Hero() {
                 alignItems: "center",
                 gap: "8px",
                 transition: "color 0.3s ease",
+                justifyContent: isMobile ? "center" : "flex-start",
               }}
               onMouseEnter={(e) =>
                 (e.currentTarget.style.color = "var(--color-text)")
@@ -288,10 +295,13 @@ export default function Hero() {
         </div>
 
         {/* Right — Floating Image Grid */}
-        <div style={{ position: "relative", height: "600px" }}>
+        <div
+          className="hero-image-grid"
+          style={{ position: "relative", height: isMobile ? "320px" : "600px" }}
+        >
           {/* Main large image */}
           <div
-            className="hero-img-1 img-overlay"
+            className="hero-img-1 hero-image-main img-overlay"
             style={{
               position: "absolute",
               top: "40px",
@@ -324,7 +334,7 @@ export default function Hero() {
 
           {/* Bottom-left overlapping */}
           <div
-            className="hero-img-2 img-overlay"
+            className="hero-img-2 hero-image-secondary img-overlay"
             style={{
               position: "absolute",
               bottom: "0",
@@ -357,7 +367,7 @@ export default function Hero() {
 
           {/* Small floating accent */}
           <div
-            className="hero-img-3 img-overlay"
+            className="hero-img-3 hero-image-accent img-overlay"
             style={{
               position: "absolute",
               bottom: "30px",
@@ -389,7 +399,7 @@ export default function Hero() {
 
           {/* Floating label */}
           <div
-            className="hero-img-1"
+            className="hero-img-1 hero-metric"
             style={{
               position: "absolute",
               top: "10px",
@@ -479,12 +489,57 @@ export default function Hero() {
         <style>{`
         @media (max-width: 767px) {
           section#hero {
+            min-height: auto !important;
             grid-template-columns: 1fr !important;
-            padding: 100px 24px 60px !important;
-            gap: 40px !important;
+            padding: 92px 20px 56px !important;
+            gap: 28px !important;
           }
-          section#hero > div:last-of-type {
+          section#hero > div:first-child {
+            gap: 24px !important;
+            padding-top: 0 !important;
+          }
+          section#hero h1 {
+            max-width: 10ch !important;
+          }
+          .hero-sub {
+            font-size: 15px !important;
+            max-width: none !important;
+          }
+          .hero-cta {
+            flex-direction: column !important;
+            align-items: stretch !important;
+            gap: 12px !important;
+          }
+          .hero-cta button {
+            width: 100% !important;
+            justify-content: center !important;
+          }
+          .hero-image-grid {
             height: 320px !important;
+            width: 100% !important;
+          }
+          .hero-image-main {
+            top: 12px !important;
+            right: 6px !important;
+            width: 74% !important;
+            height: 64% !important;
+          }
+          .hero-image-secondary {
+            left: 0 !important;
+            bottom: 0 !important;
+            width: 58% !important;
+            height: 42% !important;
+          }
+          .hero-image-accent {
+            bottom: 16px !important;
+            right: 6px !important;
+            width: 34% !important;
+            height: 30% !important;
+          }
+          .hero-metric {
+            top: 8px !important;
+            right: 8px !important;
+            padding: 8px 12px !important;
           }
           .hero-scroll-cue { display: none !important; }
         }
