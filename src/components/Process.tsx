@@ -290,7 +290,7 @@ export default function Process() {
             }}
           >
             <img
-              src="https://images.unsplash.com/photo-1737898415581-7dea57a1905b?w=800&q=80"
+              src="https://images.unsplash.com/photo-1737898415581-7dea57a1905b?auto=format&fit=crop&w=700&q=80&fm=webp"
               alt="Design process — open plan living space"
               style={{
                 width: "100%",
@@ -299,6 +299,7 @@ export default function Process() {
                 display: "block",
               }}
               loading="lazy"
+              decoding="async"
             />
           </div>
         </div>

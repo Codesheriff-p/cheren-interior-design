@@ -277,7 +277,7 @@ export default function Contact() {
             }}
           >
             <img
-              src="https://images.unsplash.com/photo-1738168266307-1d1515cbca2b?w=700&q=80"
+              src="https://images.unsplash.com/photo-1738168266307-1d1515cbca2b?auto=format&fit=crop&w=700&q=80&fm=webp"
               alt={t("contact.tag")}
               style={{
                 width: "100%",
@@ -286,6 +286,7 @@ export default function Contact() {
                 filter: "brightness(0.6)",
               }}
               loading="lazy"
+              decoding="async"
             />
             <div
               style={{

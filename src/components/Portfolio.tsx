@@ -11,56 +11,56 @@ const INITIAL_COUNT = 8;
 const PROJECTS = [
   {
     id: 1,
-    src: "https://images.unsplash.com/photo-1738168279272-c08d6dd22002?w=800&q=80",
+    src: "https://images.unsplash.com/photo-1738168279272-c08d6dd22002?auto=format&fit=crop&w=700&q=80&fm=webp",
     alt: "Minimalist living room",
     title: "Apartment on Pipera",
     type: "Residential · 80 m²",
   },
   {
     id: 2,
-    src: "https://images.unsplash.com/photo-1738168362059-44a0b8a80b39?w=800&q=80",
+    src: "https://images.unsplash.com/photo-1738168362059-44a0b8a80b39?auto=format&fit=crop&w=700&q=80&fm=webp",
     alt: "Modern kitchen with dining",
     title: "Family Kitchen Redesign",
     type: "Kitchen · 24 m²",
   },
   {
     id: 3,
-    src: "https://images.unsplash.com/photo-1738168255255-dcfcc906a665?w=800&q=80",
+    src: "https://images.unsplash.com/photo-1738168255255-dcfcc906a665?auto=format&fit=crop&w=700&q=80&fm=webp",
     alt: "Bedroom with wooden shelf",
     title: "Bedroom Suite · Park View",
     type: "Bedroom · 18 m²",
   },
   {
     id: 4,
-    src: "https://images.unsplash.com/photo-1738168346641-6aedb68a6c99?w=800&q=80",
+    src: "https://images.unsplash.com/photo-1738168346641-6aedb68a6c99?auto=format&fit=crop&w=700&q=80&fm=webp",
     alt: "White modern kitchen",
     title: "Scandinavian Kitchen",
     type: "Kitchen · 28 m²",
   },
   {
     id: 5,
-    src: "https://images.unsplash.com/photo-1738168246881-40f35f8aba0a?w=800&q=80",
+    src: "https://images.unsplash.com/photo-1738168246881-40f35f8aba0a?auto=format&fit=crop&w=700&q=80&fm=webp",
     alt: "Living room with green couch",
     title: "Sage & Linen Living Room",
     type: "Living Room · 35 m²",
   },
   {
     id: 6,
-    src: "https://images.unsplash.com/photo-1737898397476-54ba8cdbe8a5?w=800&q=80",
+    src: "https://images.unsplash.com/photo-1737898397476-54ba8cdbe8a5?auto=format&fit=crop&w=700&q=80&fm=webp",
     alt: "Bathroom with mirror",
     title: "Spa Bathroom Concept",
     type: "Bathroom · 12 m²",
   },
   {
     id: 7,
-    src: "https://images.unsplash.com/photo-1737898378296-94dc316cd443?w=800&q=80",
+    src: "https://images.unsplash.com/photo-1737898378296-94dc316cd443?auto=format&fit=crop&w=700&q=80&fm=webp",
     alt: "Dining room with chairs",
     title: "Dining Terrace",
     type: "Dining · 22 m²",
   },
   {
     id: 8,
-    src: "https://images.unsplash.com/photo-1737898415581-7dea57a1905b?w=800&q=80",
+    src: "https://images.unsplash.com/photo-1737898415581-7dea57a1905b?auto=format&fit=crop&w=700&q=80&fm=webp",
     alt: "Open plan kitchen living",
     title: "Open-Plan Studio",
     type: "Studio · 55 m²",
@@ -68,42 +68,42 @@ const PROJECTS = [
   // ── Extra projects revealed on "View All" ──
   {
     id: 9,
-    src: "https://images.unsplash.com/photo-1600210492493-0946911123ea?w=800&q=80",
+    src: "https://images.unsplash.com/photo-1600210492493-0946911123ea?auto=format&fit=crop&w=700&q=80&fm=webp",
     alt: "Contemporary home office with bookshelves",
     title: "The Study",
     type: "Residential · 16 m²",
   },
   {
     id: 10,
-    src: "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=800&q=80",
+    src: "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=700&q=80&fm=webp",
     alt: "Luxury master bedroom suite",
     title: "Master Suite Retreat",
     type: "Bedroom · 32 m²",
   },
   {
     id: 11,
-    src: "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=800&q=80",
+    src: "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?auto=format&fit=crop&w=700&q=80&fm=webp",
     alt: "Living room with natural light",
     title: "Zen Living Space",
     type: "Living Room · 40 m²",
   },
   {
     id: 12,
-    src: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80",
+    src: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=700&q=80&fm=webp",
     alt: "Modern home with pool terrace",
     title: "Garden & Pool Villa",
     type: "Residential · 90 m²",
   },
   {
     id: 13,
-    src: "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=800&q=80",
+    src: "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=700&q=80&fm=webp",
     alt: "Minimalist monochrome bathroom",
     title: "Monochrome Wash",
     type: "Bathroom · 10 m²",
   },
   {
     id: 14,
-    src: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80",
+    src: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=700&q=80&fm=webp",
     alt: "Professional chef kitchen",
     title: "Chef's Kitchen",
     type: "Kitchen · 36 m²",
@@ -171,6 +171,7 @@ function ProjectCard({
           display: "block",
         }}
         loading="lazy"
+        decoding="async"
       />
 
       {/* Hover overlay */}

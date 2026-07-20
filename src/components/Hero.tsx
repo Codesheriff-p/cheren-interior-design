@@ -5,23 +5,23 @@ import { useTranslation } from "react-i18next";
 
 const HERO_IMAGES = [
   {
-    src: "https://images.unsplash.com/photo-1738168362059-44a0b8a80b39?auto=format&fit=crop&w=1400&q=80",
+    src: "https://images.unsplash.com/photo-1738168362059-44a0b8a80b39?auto=format&fit=crop&w=900&q=80&fm=webp",
     srcSet:
-      "https://images.unsplash.com/photo-1738168362059-44a0b8a80b39?auto=format&fit=crop&w=480&q=80 480w, https://images.unsplash.com/photo-1738168362059-44a0b8a80b39?auto=format&fit=crop&w=800&q=80 800w, https://images.unsplash.com/photo-1738168362059-44a0b8a80b39?auto=format&fit=crop&w=1400&q=80 1400w",
+      "https://images.unsplash.com/photo-1738168362059-44a0b8a80b39?auto=format&fit=crop&w=480&q=80&fm=webp 480w, https://images.unsplash.com/photo-1738168362059-44a0b8a80b39?auto=format&fit=crop&w=720&q=80&fm=webp 720w, https://images.unsplash.com/photo-1738168362059-44a0b8a80b39?auto=format&fit=crop&w=900&q=80&fm=webp 900w",
     sizes: "(max-width: 768px) 100vw, 40vw",
     alt: "Modern kitchen with wooden floor",
   },
   {
-    src: "https://images.unsplash.com/photo-1738168273959-952fdc961991?auto=format&fit=crop&w=900&q=80",
+    src: "https://images.unsplash.com/photo-1738168273959-952fdc961991?auto=format&fit=crop&w=720&q=80&fm=webp",
     srcSet:
-      "https://images.unsplash.com/photo-1738168273959-952fdc961991?auto=format&fit=crop&w=480&q=80 480w, https://images.unsplash.com/photo-1738168273959-952fdc961991?auto=format&fit=crop&w=720&q=80 720w, https://images.unsplash.com/photo-1738168273959-952fdc961991?auto=format&fit=crop&w=900&q=80 900w",
+      "https://images.unsplash.com/photo-1738168273959-952fdc961991?auto=format&fit=crop&w=360&q=80&fm=webp 360w, https://images.unsplash.com/photo-1738168273959-952fdc961991?auto=format&fit=crop&w=540&q=80&fm=webp 540w, https://images.unsplash.com/photo-1738168273959-952fdc961991?auto=format&fit=crop&w=720&q=80&fm=webp 720w",
     sizes: "(max-width: 768px) 100vw, 32vw",
     alt: "Living room with couch and desk",
   },
   {
-    src: "https://images.unsplash.com/photo-1738168269267-241954441823?auto=format&fit=crop&w=900&q=80",
+    src: "https://images.unsplash.com/photo-1738168269267-241954441823?auto=format&fit=crop&w=720&q=80&fm=webp",
     srcSet:
-      "https://images.unsplash.com/photo-1738168269267-241954441823?auto=format&fit=crop&w=480&q=80 480w, https://images.unsplash.com/photo-1738168269267-241954441823?auto=format&fit=crop&w=720&q=80 720w, https://images.unsplash.com/photo-1738168269267-241954441823?auto=format&fit=crop&w=900&q=80 900w",
+      "https://images.unsplash.com/photo-1738168269267-241954441823?auto=format&fit=crop&w=320&q=80&fm=webp 320w, https://images.unsplash.com/photo-1738168269267-241954441823?auto=format&fit=crop&w=480&q=80&fm=webp 480w, https://images.unsplash.com/photo-1738168269267-241954441823?auto=format&fit=crop&w=720&q=80&fm=webp 720w",
     sizes: "(max-width: 768px) 100vw, 24vw",
     alt: "Living room with flat screen TV",
   },

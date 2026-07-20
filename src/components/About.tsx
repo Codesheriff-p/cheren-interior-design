@@ -261,7 +261,7 @@ export default function About() {
           }}
         >
           <img
-            src="https://images.unsplash.com/photo-1738168251394-9241984c8292?w=700&q=80"
+            src="https://images.unsplash.com/photo-1738168251394-9241984c8292?auto=format&fit=crop&w=700&q=80&fm=webp"
             alt="Living room with natural light"
             style={{
               width: "100%",
@@ -288,7 +288,7 @@ export default function About() {
           }}
         >
           <img
-            src="https://images.unsplash.com/photo-1737898378311-9432ddabc399?w=500&q=80"
+            src="https://images.unsplash.com/photo-1737898378311-9432ddabc399?auto=format&fit=crop&w=500&q=80&fm=webp"
             alt="Elegant hallway design"
             style={{
               width: "100%",
