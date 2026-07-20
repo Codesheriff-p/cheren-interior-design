@@ -318,6 +318,8 @@ export default function Hero() {
               srcSet={HERO_IMAGES[0].srcSet}
               sizes={HERO_IMAGES[0].sizes}
               alt={HERO_IMAGES[0].alt}
+              width={900}
+              height={700}
               style={{
                 width: "100%",
                 height: "100%",
@@ -352,6 +354,8 @@ export default function Hero() {
               srcSet={HERO_IMAGES[1].srcSet}
               sizes={HERO_IMAGES[1].sizes}
               alt={HERO_IMAGES[1].alt}
+              width={700}
+              height={600}
               style={{
                 width: "100%",
                 height: "100%",
@@ -384,6 +388,8 @@ export default function Hero() {
               srcSet={HERO_IMAGES[2].srcSet}
               sizes={HERO_IMAGES[2].sizes}
               alt={HERO_IMAGES[2].alt}
+              width={500}
+              height={400}
               style={{
                 width: "100%",
                 height: "100%",

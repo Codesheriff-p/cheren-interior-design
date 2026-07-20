@@ -279,6 +279,8 @@ export default function Contact() {
             <img
               src="https://images.unsplash.com/photo-1738168266307-1d1515cbca2b?auto=format&fit=crop&w=700&q=80&fm=webp"
               alt={t("contact.tag")}
+              width={800}
+              height={600}
               style={{
                 width: "100%",
                 height: "100%",

@@ -292,6 +292,8 @@ export default function Process() {
             <img
               src="https://images.unsplash.com/photo-1737898415581-7dea57a1905b?auto=format&fit=crop&w=700&q=80&fm=webp"
               alt="Design process — open plan living space"
+              width={800}
+              height={600}
               style={{
                 width: "100%",
                 height: "100%",

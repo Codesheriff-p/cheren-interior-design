@@ -32,6 +32,8 @@ export default function Footer() {
             <img
               src={logo}
               alt="Prydumano Design"
+              width={140}
+              height={60}
               style={{
                 width: "140px",
                 height: "auto",

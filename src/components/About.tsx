@@ -263,6 +263,8 @@ export default function About() {
           <img
             src="https://images.unsplash.com/photo-1738168251394-9241984c8292?auto=format&fit=crop&w=700&q=80&fm=webp"
             alt="Living room with natural light"
+            width={800}
+            height={600}
             style={{
               width: "100%",
               height: "100%",
@@ -290,6 +292,8 @@ export default function About() {
           <img
             src="https://images.unsplash.com/photo-1737898378311-9432ddabc399?auto=format&fit=crop&w=500&q=80&fm=webp"
             alt="Elegant hallway design"
+            width={500}
+            height={400}
             style={{
               width: "100%",
               height: "100%",

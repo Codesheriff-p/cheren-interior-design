@@ -77,6 +77,8 @@ export default function Navbar() {
           <img
             src={logo}
             alt="Logo"
+            width={120}
+            height={60}
             style={{ width: "120px", height: "auto" }}
           />
         </a>

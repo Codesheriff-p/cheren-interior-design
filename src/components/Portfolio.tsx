@@ -164,6 +164,8 @@ function ProjectCard({
       <img
         src={project.src}
         alt={project.alt}
+        width={800}
+        height={600}
         style={{
           width: "100%",
           height: "100%",
