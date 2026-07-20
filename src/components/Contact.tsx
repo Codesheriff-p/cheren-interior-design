@@ -2,12 +2,11 @@ import { useRef, useState } from "react";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useTranslation } from "react-i18next";
 
 gsap.registerPlugin(ScrollTrigger);
 
-// ─── Web3Forms Access Key ─────────────────────────────────────
 const WEB3FORMS_ACCESS_KEY = "90ea91f9-d1bb-43d6-9b30-63cc400edce7";
-// ──────────────────────────────────────────────────────────────
 
 type FormState = {
   name: string;
@@ -21,6 +20,7 @@ type Status = "idle" | "sending" | "sent" | "error";
 
 export default function Contact() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const { t } = useTranslation();
   const [status, setStatus] = useState<Status>("idle");
   const [form, setForm] = useState<FormState>({
     name: "",
@@ -63,7 +63,6 @@ export default function Contact() {
     setStatus("sending");
 
     try {
-      // Build payload for Web3Forms
       const payload = {
         access_key: WEB3FORMS_ACCESS_KEY,
         name: form.name,
@@ -96,6 +95,12 @@ export default function Contact() {
   };
 
   const isSending = status === "sending";
+  const contactDetails = t("contact.contactDetails", {
+    returnObjects: true,
+  }) as Array<{ label: string; value: string }>;
+  const serviceOptions = t("contact.form.serviceOptions", {
+    returnObjects: true,
+  }) as Array<{ value: string; label: string }>;
 
   return (
     <section
@@ -113,7 +118,6 @@ export default function Contact() {
           alignItems: "start",
         }}
       >
-        {/* ── Left — Info ───────────────────────────────────────────── */}
         <div
           className="contact-left"
           style={{
@@ -149,7 +153,7 @@ export default function Contact() {
                   color: "var(--color-gold)",
                 }}
               >
-                Start a Project
+                {t("contact.tag")}
               </span>
             </div>
             <h2
@@ -162,9 +166,7 @@ export default function Contact() {
                 marginBottom: "24px",
               }}
             >
-              Let's create{" "}
-              <em style={{ color: "var(--color-gold)" }}>something</em>{" "}
-              beautiful.
+              {t("contact.title")}
             </h2>
             <p
               style={{
@@ -175,114 +177,97 @@ export default function Contact() {
                 maxWidth: "400px",
               }}
             >
-              Ready to transform your space? Tell us about your project and
-              we'll arrange a free 30-minute consultation to discuss your
-              vision.
+              {t("contact.intro")}
             </p>
           </div>
 
-          {/* Contact details */}
           <div
             style={{ display: "flex", flexDirection: "column", gap: "24px" }}
           >
-            {[
-              {
-                label: "Email",
-                value: "chereninterior@gmail.com",
-                icon: (
-                  <svg
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.4"
-                  >
-                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                    <polyline points="22,6 12,13 2,6" />
-                  </svg>
-                ),
-              },
-              {
-                label: "Phone",
-                value: "+40 766 334 491",
-                icon: (
-                  <svg
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.4"
-                  >
-                    <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" />
-                  </svg>
-                ),
-              },
-              {
-                label: "Studio",
-                value: "Bucharest",
-                icon: (
-                  <svg
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.4"
-                  >
-                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
-                    <circle cx="12" cy="10" r="3" />
-                  </svg>
-                ),
-              },
-            ].map((item) => (
-              <div
-                key={item.label}
-                style={{ display: "flex", alignItems: "center", gap: "16px" }}
-              >
+            {contactDetails.map((item) => {
+              const lowerLabel = item.label.toLowerCase();
+              return (
                 <div
-                  style={{
-                    width: "40px",
-                    height: "40px",
-                    border: "1px solid var(--color-border)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    color: "var(--color-gold)",
-                    flexShrink: 0,
-                  }}
+                  key={item.label}
+                  style={{ display: "flex", alignItems: "center", gap: "16px" }}
                 >
-                  {item.icon}
-                </div>
-                <div>
-                  <p
+                  <div
                     style={{
-                      fontFamily: "var(--font-body)",
-                      fontSize: "10px",
-                      letterSpacing: "0.15em",
-                      textTransform: "uppercase",
-                      color: "var(--color-text-muted)",
-                      marginBottom: "2px",
+                      width: "40px",
+                      height: "40px",
+                      border: "1px solid var(--color-border)",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      color: "var(--color-gold)",
+                      flexShrink: 0,
                     }}
                   >
-                    {item.label}
-                  </p>
-                  <p
-                    style={{
-                      fontFamily: "var(--font-body)",
-                      fontSize: "14px",
-                      color: "var(--color-text)",
-                    }}
-                  >
-                    {item.value}
-                  </p>
+                    {lowerLabel.includes("email") ? (
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1.4"
+                      >
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                        <polyline points="22,6 12,13 2,6" />
+                      </svg>
+                    ) : lowerLabel.includes("phone") ? (
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1.4"
+                      >
+                        <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" />
+                      </svg>
+                    ) : (
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1.4"
+                      >
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                        <circle cx="12" cy="10" r="3" />
+                      </svg>
+                    )}
+                  </div>
+                  <div>
+                    <p
+                      style={{
+                        fontFamily: "var(--font-body)",
+                        fontSize: "10px",
+                        letterSpacing: "0.15em",
+                        textTransform: "uppercase",
+                        color: "var(--color-text-muted)",
+                        marginBottom: "2px",
+                      }}
+                    >
+                      {item.label}
+                    </p>
+                    <p
+                      style={{
+                        fontFamily: "var(--font-body)",
+                        fontSize: "14px",
+                        color: "var(--color-text)",
+                      }}
+                    >
+                      {item.value}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
 
-          {/* Image accent */}
           <div
             style={{
               position: "relative",
@@ -293,7 +278,7 @@ export default function Contact() {
           >
             <img
               src="https://images.unsplash.com/photo-1738168266307-1d1515cbca2b?w=700&q=80"
-              alt="Our design studio"
+              alt={t("contact.tag")}
               style={{
                 width: "100%",
                 height: "100%",
@@ -321,17 +306,13 @@ export default function Contact() {
                   padding: "0 24px",
                 }}
               >
-                "Every space tells a story.
-                <br />
-                Let's write yours."
+                {t("contact.quote")}
               </p>
             </div>
           </div>
         </div>
 
-        {/* ── Right — Form ──────────────────────────────────────────── */}
         <div className="contact-right" style={{ opacity: 0 }}>
-          {/* Success state */}
           {status === "sent" ? (
             <div
               style={{
@@ -366,7 +347,7 @@ export default function Contact() {
                   color: "var(--color-text)",
                 }}
               >
-                Message Sent
+                {t("contact.form.successTitle")}
               </h3>
               <p
                 style={{
@@ -376,8 +357,7 @@ export default function Contact() {
                   lineHeight: 1.7,
                 }}
               >
-                Thank you for reaching out. We'll review your project and get
-                back to you within 24 hours.
+                {t("contact.form.successText")}
               </p>
               <button
                 onClick={() => setStatus("idle")}
@@ -406,7 +386,7 @@ export default function Contact() {
                     "var(--color-text-muted)";
                 }}
               >
-                Send Another
+                {t("contact.form.sendAnother")}
               </button>
             </div>
           ) : (
@@ -424,7 +404,7 @@ export default function Contact() {
                   borderBottom: "1px solid var(--color-border)",
                 }}
               >
-                Tell us about your project
+                {t("contact.form.title")}
               </h3>
 
               <div
@@ -450,7 +430,7 @@ export default function Contact() {
                       color: "var(--color-text-muted)",
                     }}
                   >
-                    Your Name *
+                    {t("contact.form.name")}
                   </label>
                   <input
                     className="form-input"
@@ -477,7 +457,7 @@ export default function Contact() {
                       color: "var(--color-text-muted)",
                     }}
                   >
-                    Email Address *
+                    {t("contact.form.email")}
                   </label>
                   <input
                     className="form-input"
@@ -515,7 +495,7 @@ export default function Contact() {
                       color: "var(--color-text-muted)",
                     }}
                   >
-                    Phone
+                    {t("contact.form.phone")}
                   </label>
                   <input
                     className="form-input"
@@ -543,7 +523,7 @@ export default function Contact() {
                       color: "var(--color-text-muted)",
                     }}
                   >
-                    Service Needed
+                    {t("contact.form.service")}
                   </label>
                   <select
                     className="form-input"
@@ -554,32 +534,17 @@ export default function Contact() {
                     style={{ cursor: "pointer", background: "transparent" }}
                   >
                     <option value="" style={{ background: "#161412" }}>
-                      Select a service
+                      {t("contact.form.servicePlaceholder")}
                     </option>
-                    <option
-                      value="Interior Design"
-                      style={{ background: "#161412" }}
-                    >
-                      Interior Design
-                    </option>
-                    <option
-                      value="3D Visualization"
-                      style={{ background: "#161412" }}
-                    >
-                      3D Visualization
-                    </option>
-                    <option
-                      value="Furniture Selection"
-                      style={{ background: "#161412" }}
-                    >
-                      Furniture Selection
-                    </option>
-                    <option
-                      value="Turnkey Solution"
-                      style={{ background: "#161412" }}
-                    >
-                      Turnkey Solution
-                    </option>
+                    {serviceOptions.map((option) => (
+                      <option
+                        key={option.value}
+                        value={option.value}
+                        style={{ background: "#161412" }}
+                      >
+                        {option.label}
+                      </option>
+                    ))}
                   </select>
                 </div>
               </div>
@@ -596,13 +561,13 @@ export default function Contact() {
                     color: "var(--color-text-muted)",
                   }}
                 >
-                  Project Description *
+                  {t("contact.form.message")}
                 </label>
                 <textarea
                   className="form-input"
                   required
                   rows={5}
-                  placeholder="Tell us about your space, vision, and timeline..."
+                  placeholder={t("contact.form.messagePlaceholder")}
                   value={form.message}
                   onChange={(e) =>
                     setForm({ ...form, message: e.target.value })
@@ -611,7 +576,6 @@ export default function Contact() {
                 />
               </div>
 
-              {/* Error banner */}
               {status === "error" && (
                 <p
                   style={{
@@ -623,13 +587,12 @@ export default function Contact() {
                     lineHeight: 1.5,
                   }}
                 >
-                  Something went wrong. Please check your connection and try
-                  again, or email us directly at{" "}
+                  {t("contact.form.error")}{" "}
                   <a
                     href="mailto:hello@prydumano.design"
                     style={{ color: "#e07070", textDecoration: "underline" }}
                   >
-                    hello@prydumano.design
+                    {t("contact.form.errorEmail")}
                   </a>
                 </p>
               )}
@@ -691,10 +654,10 @@ export default function Contact() {
                         strokeDashoffset="10"
                       />
                     </svg>
-                    Sending…
+                    {t("contact.form.sending")}
                   </>
                 ) : (
-                  "Send Message →"
+                  t("contact.form.submit")
                 )}
               </button>
             </form>

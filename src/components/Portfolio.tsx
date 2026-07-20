@@ -2,6 +2,7 @@ import { useRef, useState, useLayoutEffect } from "react";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useTranslation } from "react-i18next";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -110,22 +111,22 @@ const PROJECTS = [
 ];
 
 const FILTERS = [
-  "All",
-  "Residential",
-  "Kitchen",
-  "Living Room",
-  "Bedroom",
-  "Bathroom",
+  "all",
+  "residential",
+  "kitchen",
+  "livingRoom",
+  "bedroom",
+  "bathroom",
 ];
 
 const COL_SPAN: Record<string, string> = {
-  tall:   "span 4 / span 4",
-  wide:   "span 8 / span 8",
+  tall: "span 4 / span 4",
+  wide: "span 8 / span 8",
   normal: "span 4 / span 4",
 };
 const ROW_SPAN: Record<string, string> = {
-  tall:   "span 2 / span 2",
-  wide:   "span 1 / span 1",
+  tall: "span 2 / span 2",
+  wide: "span 1 / span 1",
   normal: "span 1 / span 1",
 };
 
@@ -218,18 +219,23 @@ function ProjectCard({
 
 export default function Portfolio() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const extraRef    = useRef<HTMLDivElement>(null);
-  const [activeFilter, setActiveFilter] = useState("All");
-  const [isExpanded,   setIsExpanded]   = useState(false);
+  const extraRef = useRef<HTMLDivElement>(null);
+  const { t } = useTranslation();
+  const [activeFilter, setActiveFilter] = useState("all");
+  const [isExpanded, setIsExpanded] = useState(false);
 
   const filtered =
-    activeFilter === "All"
+    activeFilter === "all"
       ? PROJECTS
-      : PROJECTS.filter((p) => p.type.includes(activeFilter));
+      : PROJECTS.filter(
+          (p) =>
+            p.type.includes(t(`portfolio.filters.${activeFilter}`)) ||
+            p.type.includes(activeFilter),
+        );
 
   const initialProjects = filtered.slice(0, INITIAL_COUNT);
-  const extraProjects   = filtered.slice(INITIAL_COUNT);
-  const hasExtra        = extraProjects.length > 0;
+  const extraProjects = filtered.slice(INITIAL_COUNT);
+  const hasExtra = extraProjects.length > 0;
 
   // ── Collapse the extra section instantly when filter changes (before paint) ──
   useLayoutEffect(() => {
@@ -288,7 +294,7 @@ export default function Portfolio() {
       setIsExpanded(true);
 
       gsap.to(extra, {
-        maxHeight: 4000,      // more than any realistic grid height
+        maxHeight: 4000, // more than any realistic grid height
         duration: 0.95,
         ease: "power3.out",
       });
@@ -335,7 +341,6 @@ export default function Portfolio() {
       style={{ padding: "120px 48px" }}
     >
       <div style={{ maxWidth: "1400px", margin: "0 auto" }}>
-
         {/* ── Header ── */}
         <div className="portfolio-header" style={{ marginBottom: "56px" }}>
           <div
@@ -363,7 +368,7 @@ export default function Portfolio() {
                 color: "var(--color-gold)",
               }}
             >
-              Our Work
+              {t("portfolio.tag")}
             </span>
           </div>
 
@@ -385,8 +390,9 @@ export default function Portfolio() {
                 color: "var(--color-text)",
               }}
             >
-              Selected{" "}
-              <em style={{ color: "var(--color-gold)" }}>Projects</em>
+              <em style={{ color: "var(--color-gold)" }}>
+                {t("portfolio.title")}
+              </em>
             </h2>
 
             {/* Filters */}
@@ -398,9 +404,7 @@ export default function Portfolio() {
                   style={{
                     padding: "8px 20px",
                     background:
-                      activeFilter === f
-                        ? "var(--color-gold)"
-                        : "transparent",
+                      activeFilter === f ? "var(--color-gold)" : "transparent",
                     border: `1px solid ${
                       activeFilter === f
                         ? "var(--color-gold)"
@@ -417,7 +421,7 @@ export default function Portfolio() {
                     transition: "all 0.3s ease",
                   }}
                 >
-                  {f}
+                  {t(`portfolio.filters.${f}`)}
                 </button>
               ))}
             </div>
@@ -494,15 +498,26 @@ export default function Portfolio() {
             >
               {isExpanded ? (
                 <>
-                  Show Less
+                  {t("portfolio.showLess")}
                   {/* Up chevron */}
-                  <svg width="10" height="7" viewBox="0 0 10 7" fill="none" style={{ flexShrink: 0 }}>
-                    <path d="M1 6L5 2L9 6" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
+                  <svg
+                    width="10"
+                    height="7"
+                    viewBox="0 0 10 7"
+                    fill="none"
+                    style={{ flexShrink: 0 }}
+                  >
+                    <path
+                      d="M1 6L5 2L9 6"
+                      stroke="currentColor"
+                      strokeWidth="1.2"
+                      strokeLinecap="round"
+                    />
                   </svg>
                 </>
               ) : (
                 <>
-                  View All Projects
+                  {t("portfolio.viewAll")}
                   {/* Down chevron + count badge */}
                   <span
                     style={{
@@ -518,8 +533,19 @@ export default function Portfolio() {
                   >
                     +{extraProjects.length}
                   </span>
-                  <svg width="10" height="7" viewBox="0 0 10 7" fill="none" style={{ flexShrink: 0 }}>
-                    <path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
+                  <svg
+                    width="10"
+                    height="7"
+                    viewBox="0 0 10 7"
+                    fill="none"
+                    style={{ flexShrink: 0 }}
+                  >
+                    <path
+                      d="M1 1L5 5L9 1"
+                      stroke="currentColor"
+                      strokeWidth="1.2"
+                      strokeLinecap="round"
+                    />
                   </svg>
                 </>
               )}

@@ -1,10 +1,232 @@
 {
+  "nav": {
+    "about": "About",
+    "services": "Services",
+    "portfolio": "Portfolio",
+    "process": "Process",
+    "contact": "Contact",
+    "getInTouch": "Get in Touch"
+  },
   "hero": {
+    "tag": "Interior Design Studio",
     "title": "Luxury Interior Design",
     "subtitle": "We transform spaces into experiences",
-    "cta": "View our projects"
+    "cta": "View our projects",
+    "aboutUs": "About Us"
+  },
+  "about": {
+    "tag": "About the Studio",
+    "heading": "Design with purpose and precision.",
+    "paragraph1": "At Cheren's Interior we've been shaping homes and commercial spaces that feel as good as they look. Every project begins with listening.",
+    "paragraph2": "We believe great design is invisible — it simply makes living easier, warmer, and more meaningful. Our studio handles every step: from initial concept and 3D visualization to furniture sourcing and final installation.",
+    "stats": {
+      "projectsCompleted": "Projects Completed",
+      "yearsOfExperience": "Years of Experience"
+    }
   },
   "services": {
-    "title": "Our Services"
+    "tag": "What We Do",
+    "title": "Our Services",
+    "intro": "Every home has a story. We help you write it with thoughtful design choices, quality materials, and careful execution.",
+    "items": [
+      {
+        "title": "Interior Design",
+        "desc": "Full-cycle interior design for residential and commercial spaces. From concept development to complete style packages and material selection."
+      },
+      {
+        "title": "3D Visualization",
+        "desc": "Photorealistic 3D renders and virtual walkthroughs so you can see exactly how your space will look before a single item is moved."
+      },
+      {
+        "title": "Furniture Selection",
+        "desc": "Curated procurement of furniture, lighting, and decor from trusted European and Ukrainian suppliers — within your budget."
+      }
+    ]
+  },
+  "portfolio": {
+    "tag": "Our Work",
+    "title": "Selected Projects",
+    "filters": {
+      "all": "All",
+      "residential": "Residential",
+      "kitchen": "Kitchen",
+      "livingRoom": "Living Room",
+      "bedroom": "Bedroom",
+      "bathroom": "Bathroom"
+    },
+    "showLess": "Show Less",
+    "viewAll": "View All Projects",
+    "projects": [
+      {
+        "title": "Apartment on Pipera",
+        "type": "Residential · 80 m²"
+      },
+      {
+        "title": "Family Kitchen Redesign",
+        "type": "Kitchen · 24 m²"
+      },
+      {
+        "title": "Bedroom Suite · Park View",
+        "type": "Bedroom · 18 m²"
+      },
+      {
+        "title": "Scandinavian Kitchen",
+        "type": "Kitchen · 28 m²"
+      },
+      {
+        "title": "Sage & Linen Living Room",
+        "type": "Living Room · 35 m²"
+      },
+      {
+        "title": "Spa Bathroom Concept",
+        "type": "Bathroom · 12 m²"
+      },
+      {
+        "title": "Dining Terrace",
+        "type": "Dining · 22 m²"
+      },
+      {
+        "title": "Open-Plan Studio",
+        "type": "Studio · 55 m²"
+      },
+      {
+        "title": "The Study",
+        "type": "Residential · 16 m²"
+      },
+      {
+        "title": "Master Suite Retreat",
+        "type": "Bedroom · 32 m²"
+      },
+      {
+        "title": "Zen Living Space",
+        "type": "Living Room · 40 m²"
+      },
+      {
+        "title": "Garden & Pool Villa",
+        "type": "Residential · 90 m²"
+      },
+      {
+        "title": "Monochrome Wash",
+        "type": "Bathroom · 10 m²"
+      },
+      {
+        "title": "Chef's Kitchen",
+        "type": "Kitchen · 36 m²"
+      }
+    ]
+  },
+  "process": {
+    "tag": "How We Work",
+    "title": "Our Process",
+    "intro": "A transparent, collaborative process designed to deliver exceptional results on time and within budget.",
+    "steps": [
+      {
+        "title": "Discovery",
+        "duration": "1–2 days",
+        "desc": "We meet to understand your lifestyle, preferences, and goals. We review the space, take measurements, and define the project scope and budget."
+      },
+      {
+        "title": "Concept & Design",
+        "duration": "2–3 weeks",
+        "desc": "Our team develops two or three distinct concept directions. We present mood boards, material palettes, and preliminary layouts for your feedback."
+      },
+      {
+        "title": "3D Visualization",
+        "duration": "1–2 weeks",
+        "desc": "Photorealistic renders of the approved concept let you experience the space before any works begin. Revisions until you love every corner."
+      },
+      {
+        "title": "Execution & Handover",
+        "duration": "4–12 weeks",
+        "desc": "We manage all contractors, deliveries, and installations. You receive a complete, move-in-ready space with our after-project support guarantee."
+      }
+    ]
+  },
+  "testimonials": {
+    "tag": "Client Stories",
+    "title": "Words from those",
+    "titleHighlight": "we've designed for",
+    "items": [
+      {
+        "quote": "Cheren's Interior transformed our apartment completely. They listened to everything we wanted and delivered a home that feels like us — only better. The 3D renders were spot on; the real thing was even more beautiful.",
+        "name": "Matei Cernat",
+        "project": "Apartment redesign, 95 m²"
+      },
+      {
+        "quote": "Working with this studio was effortless. They handled all the contractors, kept us updated, and finished two weeks ahead of schedule. Our kitchen and living space is now the heart of our home.",
+        "name": "Ana Voinea",
+        "project": "Open-plan kitchen renovation"
+      },
+      {
+        "quote": "I had a very specific vision and limited budget. The team found creative solutions at every turn. The result exceeds what I imagined was possible. Highly recommend for anyone who wants real expertise.",
+        "name": "Bianca Rădulescu",
+        "project": "Studio apartment, 42 m²"
+      },
+      {
+        "quote": "From the first meeting to final handover, Cheren's Interior was professional, creative, and a pleasure to work with. Our children's room is magical. They even sourced furniture we thought was out of our range.",
+        "name": "David Munteanu",
+        "project": "Children's room & master bedroom"
+      }
+    ]
+  },
+  "contact": {
+    "tag": "Start a Project",
+    "title": "Let's create something beautiful.",
+    "intro": "Ready to transform your space? Tell us about your project and we'll arrange a free 30-minute consultation to discuss your vision.",
+    "contactDetails": [
+      {
+        "label": "Email",
+        "value": "chereninterior@gmail.com"
+      },
+      {
+        "label": "Phone",
+        "value": "+40 766 334 491"
+      },
+      {
+        "label": "Studio",
+        "value": "Bucharest"
+      }
+    ],
+    "quote": "Every space tells a story. Let's write yours.",
+    "form": {
+      "title": "Tell us about your project",
+      "name": "Your Name *",
+      "email": "Email Address *",
+      "phone": "Phone",
+      "service": "Service Needed",
+      "servicePlaceholder": "Select a service",
+      "serviceOptions": [
+        { "value": "Interior Design", "label": "Interior Design" },
+        { "value": "3D Visualization", "label": "3D Visualization" },
+        { "value": "Furniture Selection", "label": "Furniture Selection" },
+        { "value": "Turnkey Solution", "label": "Turnkey Solution" }
+      ],
+      "message": "Project Description *",
+      "messagePlaceholder": "Tell us about your space, vision, and timeline...",
+      "submit": "Send Message →",
+      "sending": "Sending…",
+      "sendAnother": "Send Another",
+      "successTitle": "Message Sent",
+      "successText": "Thank you for reaching out. We'll review your project and get back to you within 24 hours.",
+      "error": "Something went wrong. Please check your connection and try again, or email us directly at",
+      "errorEmail": "hello@prydumano.design"
+    }
+  },
+  "footer": {
+    "brandTag": "Design Studio",
+    "brandCopy": "A team of interior designers creating spaces that feel as good as they look.",
+    "links": {
+      "studio": ["About Us", "Our Team"],
+      "services": [
+        "Interior Design",
+        "3D Visualization",
+        "Furniture Selection",
+        "Turnkey Solutions"
+      ]
+    },
+    "copyright": "© {{year}} Cheren's Interior. All rights reserved."
+  },
+  "marquee": {
+    "text": "CHEREN'S INTERIOR  •  INTERIOR SPACES  •  COMFORT BY DESIGN  •  LVIV STUDIO  •  CRAFTED WITH CARE  •"
   }
 }

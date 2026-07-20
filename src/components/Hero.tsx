@@ -130,7 +130,7 @@ export default function Hero() {
               color: "var(--color-gold)",
             }}
           >
-            Interior Design Studio
+            {t("hero.tag")}
           </span>
         </div>
 
@@ -159,10 +159,9 @@ export default function Hero() {
                 style={{
                   display: "inline-block",
                   fontStyle: word.endsWith(".") ? "italic" : "normal",
-                  color:
-                    word.endsWith(".")
-                      ? "var(--color-gold)"
-                      : "var(--color-text)",
+                  color: word.endsWith(".")
+                    ? "var(--color-gold)"
+                    : "var(--color-text)",
                 }}
               >
                 {word}
@@ -254,7 +253,7 @@ export default function Hero() {
               (e.currentTarget.style.color = "var(--color-text-muted)")
             }
           >
-            About Us
+            {t("hero.aboutUs")}
             <svg width="16" height="8" viewBox="0 0 16 8" fill="none">
               <path
                 d="M0 4H14M14 4L11 1M14 4L11 7"
@@ -395,11 +394,15 @@ export default function Hero() {
         role="button"
         tabIndex={0}
         onClick={() =>
-          document.querySelector("#portfolio")?.scrollIntoView({ behavior: "smooth" })
+          document
+            .querySelector("#portfolio")
+            ?.scrollIntoView({ behavior: "smooth" })
         }
         onKeyDown={(e) => {
           if (e.key === "Enter" || e.key === " ") {
-            document.querySelector("#portfolio")?.scrollIntoView({ behavior: "smooth" });
+            document
+              .querySelector("#portfolio")
+              ?.scrollIntoView({ behavior: "smooth" });
           }
         }}
         style={{

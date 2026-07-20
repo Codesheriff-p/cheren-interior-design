@@ -2,14 +2,13 @@ import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useTranslation } from "react-i18next";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const SERVICES = [
   {
     num: "01",
-    title: "Interior Design",
-    desc: "Full-cycle interior design for residential and commercial spaces. From concept development to complete style packages and material selection.",
     icon: (
       <svg
         width="32"
@@ -27,8 +26,6 @@ const SERVICES = [
   },
   {
     num: "02",
-    title: "3D Visualization",
-    desc: "Photorealistic 3D renders and virtual walkthroughs so you can see exactly how your space will look before a single item is moved.",
     icon: (
       <svg
         width="32"
@@ -45,8 +42,6 @@ const SERVICES = [
   },
   {
     num: "03",
-    title: "Furniture Selection",
-    desc: "Curated procurement of furniture, lighting, and decor from trusted European and Ukrainian suppliers — within your budget.",
     icon: (
       <svg
         width="32"
@@ -66,6 +61,11 @@ const SERVICES = [
 
 export default function Services() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const { t } = useTranslation();
+  const serviceItems = t("services.items", { returnObjects: true }) as Array<{
+    title: string;
+    desc: string;
+  }>;
 
   useGSAP(
     () => {
@@ -143,7 +143,7 @@ export default function Services() {
                   color: "var(--color-gold)",
                 }}
               >
-                What We Do
+                {t("services.tag")}
               </span>
             </div>
             <h2
@@ -155,7 +155,9 @@ export default function Services() {
                 color: "var(--color-text)",
               }}
             >
-              Our <em style={{ color: "var(--color-gold)" }}>Services</em>
+              <em style={{ color: "var(--color-gold)" }}>
+                {t("services.title")}
+              </em>
             </h2>
             <p
               style={{
@@ -166,8 +168,7 @@ export default function Services() {
                 maxWidth: "900px",
               }}
             >
-              Every home has a story. We help you write it with thoughtful
-              design choices, quality materials, and careful execution.
+              {t("services.intro")}
             </p>
           </div>
         </div>
@@ -183,7 +184,7 @@ export default function Services() {
             border: "1px solid var(--color-border)",
           }}
         >
-          {SERVICES.map((service) => (
+          {SERVICES.map((service, index) => (
             <div
               key={service.num}
               className="service-card"
@@ -238,7 +239,7 @@ export default function Services() {
                   lineHeight: 1.2,
                 }}
               >
-                {service.title}
+                {serviceItems[index]?.title ?? service.num}
               </h3>
 
               <p
@@ -250,7 +251,7 @@ export default function Services() {
                   flexGrow: 1,
                 }}
               >
-                {service.desc}
+                {serviceItems[index]?.desc ?? ""}
               </p>
 
               {/* <div

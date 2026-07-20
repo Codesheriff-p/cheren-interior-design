@@ -1,20 +1,22 @@
 import { useRef, useEffect, useState } from "react";
 import { gsap } from "gsap";
+import { useTranslation } from "react-i18next";
 import logo from "../assets/logo.png";
 import LangSwitcher from "./LangSwitcher";
-
-const NAV_LINKS = [
-  { label: "About", href: "#about" },
-  { label: "Services", href: "#services" },
-  { label: "Portfolio", href: "#portfolio" },
-  { label: "Process", href: "#process" },
-  { label: "Contact", href: "#contact" },
-];
 
 export default function Navbar() {
   const navRef = useRef<HTMLElement>(null);
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const { t } = useTranslation();
+
+  const NAV_LINKS = [
+    { label: t("nav.about"), href: "#about" },
+    { label: t("nav.services"), href: "#services" },
+    { label: t("nav.portfolio"), href: "#portfolio" },
+    { label: t("nav.process"), href: "#process" },
+    { label: t("nav.contact"), href: "#contact" },
+  ];
 
   useEffect(() => {
     gsap.fromTo(
@@ -139,7 +141,7 @@ export default function Navbar() {
                 el.style.color = "var(--color-gold)";
               }}
             >
-              Get in Touch
+              {t("nav.getInTouch")}
             </button>
           </li>
         </ul>

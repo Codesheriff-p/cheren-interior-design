@@ -1,10 +1,232 @@
 {
+  "nav": {
+    "about": "Despre",
+    "services": "Servicii",
+    "portfolio": "Portofoliu",
+    "process": "Proces",
+    "contact": "Contact",
+    "getInTouch": "Contactează-ne"
+  },
   "hero": {
+    "tag": "Studio de Design Interior",
     "title": "Design Interior de Lux",
     "subtitle": "Transformăm spațiile în experiențe",
-    "cta": "Vezi proiectele noastre"
+    "cta": "Vezi proiectele noastre",
+    "aboutUs": "Despre noi"
+  },
+  "about": {
+    "tag": "Despre Studio",
+    "heading": "Design cu scop și precizie.",
+    "paragraph1": "La Cheren's Interior modelăm case și spații comerciale care se simt la fel de bine precum arată. Fiecare proiect începe cu ascultarea.",
+    "paragraph2": "Credem că un design bun este invizibil — simplu face viața mai ușoară, mai caldă și mai semnificativă. Studioul nostru gestionează fiecare etapă: de la concept inițial și vizualizare 3D până la achiziția mobilierului și instalarea finală.",
+    "stats": {
+      "projectsCompleted": "Proiecte Finalizate",
+      "yearsOfExperience": "Ani de Experiență"
+    }
   },
   "services": {
-    "title": "Serviciile Noastre"
+    "tag": "Ce Facem",
+    "title": "Serviciile Noastre",
+    "intro": "Fiecare casă are o poveste. Te ajutăm să o scrii cu alegeri de design gândite, materiale de calitate și execuție atentă.",
+    "items": [
+      {
+        "title": "Design Interior",
+        "desc": "Design interior complet pentru spații rezidențiale și comerciale. De la dezvoltarea conceptului până la pachete complete de stil și selecția materialelor."
+      },
+      {
+        "title": "Vizualizare 3D",
+        "desc": "Rendere 3D fotorealistice și tururi virtuale, astfel încât să poți vedea exact cum va arăta spațiul tău înainte de a fi mutat un singur obiect."
+      },
+      {
+        "title": "Selecția Mobilierului",
+        "desc": "Achiziții curate de mobilier, iluminat și decor de la furnizori europeni și ucraineni de încredere — în limita bugetului tău."
+      }
+    ]
+  },
+  "portfolio": {
+    "tag": "Activitatea Noastră",
+    "title": "Proiecte Selectate",
+    "filters": {
+      "all": "Toate",
+      "residential": "Rezidențial",
+      "kitchen": "Bucătărie",
+      "livingRoom": "Living Room",
+      "bedroom": "Dormitor",
+      "bathroom": "Baie"
+    },
+    "showLess": "Arată Mai Puțin",
+    "viewAll": "Vezi Toate Proiectele",
+    "projects": [
+      {
+        "title": "Apartament pe Pipera",
+        "type": "Rezidențial · 80 m²"
+      },
+      {
+        "title": "Redesign Bucătărie de Familie",
+        "type": "Bucătărie · 24 m²"
+      },
+      {
+        "title": "Suită de Dormitor · Park View",
+        "type": "Dormitor · 18 m²"
+      },
+      {
+        "title": "Bucătărie Scandinaviană",
+        "type": "Bucătărie · 28 m²"
+      },
+      {
+        "title": "Living Room Sage & Linen",
+        "type": "Living Room · 35 m²"
+      },
+      {
+        "title": "Concept Baie Spa",
+        "type": "Baie · 12 m²"
+      },
+      {
+        "title": "Terasa de Dining",
+        "type": "Dining · 22 m²"
+      },
+      {
+        "title": "Studio Open-Plan",
+        "type": "Studio · 55 m²"
+      },
+      {
+        "title": "Biroul",
+        "type": "Rezidențial · 16 m²"
+      },
+      {
+        "title": "Retreat Master Suite",
+        "type": "Dormitor · 32 m²"
+      },
+      {
+        "title": "Spațiu Zen",
+        "type": "Living Room · 40 m²"
+      },
+      {
+        "title": "Villa cu Grădină și Piscină",
+        "type": "Rezidențial · 90 m²"
+      },
+      {
+        "title": "Lavaj Monocrom",
+        "type": "Baie · 10 m²"
+      },
+      {
+        "title": "Bucătărie a Șefului",
+        "type": "Bucătărie · 36 m²"
+      }
+    ]
+  },
+  "process": {
+    "tag": "Cum Lucrăm",
+    "title": "Procesul Nostru",
+    "intro": "Un proces transparent și colaborativ, conceput pentru a livra rezultate excepționale la timp și în limita bugetului.",
+    "steps": [
+      {
+        "title": "Descoperire",
+        "duration": "1–2 zile",
+        "desc": "Ne întâlnim pentru a înțelege stilul tău de viață, preferințele și obiectivele. Revizuim spațiul, luăm măsurători și definim sfera proiectului și bugetul."
+      },
+      {
+        "title": "Concept și Design",
+        "duration": "2–3 săptămâni",
+        "desc": "Echipa noastră dezvoltă două sau trei direcții de concept distincte. Vă prezentăm mood boards, palete de materiale și machete preliminare pentru feedback."
+      },
+      {
+        "title": "Vizualizare 3D",
+        "duration": "1–2 săptămâni",
+        "desc": "Rendere fotorealiste ale conceptului aprobat îți permit să experimentezi spațiul înainte de a începe orice lucrare. Revizuiri până când îți place fiecare colț."
+      },
+      {
+        "title": "Execuție și Predare",
+        "duration": "4–12 săptămâni",
+        "desc": "Gestionăm toți contractanții, livrările și instalările. Primești un spațiu complet, gata de ocupare, cu garanția noastră de suport după proiect."
+      }
+    ]
+  },
+  "testimonials": {
+    "tag": "Povești de Clienți",
+    "title": "Cuvintele celor",
+    "titleHighlight": "pe care i-am proiectat",
+    "items": [
+      {
+        "quote": "Cheren's Interior a transformat complet apartamentul nostru. Ne-au ascultat tot ce ne-am dorit și ne-au livrat o casă care ne reprezintă — doar mai bine. Rendersurile 3D au fost perfecte; realitatea a fost chiar mai frumoasă.",
+        "name": "Matei Cernat",
+        "project": "Redesign apartament, 95 m²"
+      },
+      {
+        "quote": "Să lucrăm cu acest studio a fost simplu. Au gestionat toți contractanții, ne-au ținut la curent și au terminat cu două săptămâni mai devreme. Bucătăria și livingul nostru sunt acum inima casei noastre.",
+        "name": "Ana Voinea",
+        "project": "Renovare bucătărie open-plan"
+      },
+      {
+        "quote": "Am avut o viziune foarte clară și un buget limitat. Echipa a găsit soluții creative la fiecare pas. Rezultatul depășește ceea ce mi-am imaginat că este posibil. Recomand cu căldură pentru oricine vrea expertiză reală.",
+        "name": "Bianca Rădulescu",
+        "project": "Apartament studio, 42 m²"
+      },
+      {
+        "quote": "De la prima întâlnire până la predarea finală, Cheren's Interior a fost profesionist, creativ și plăcut de colaborat. Camera copiilor este magică. Au găsit chiar mobilier pe care credeam că este în afara bugetului nostru.",
+        "name": "David Munteanu",
+        "project": "Dormitor și cameră copii"
+      }
+    ]
+  },
+  "contact": {
+    "tag": "Începe un Proiect",
+    "title": "Hai să creăm ceva frumos.",
+    "intro": "Ești gata să îți transformi spațiul? Spune-ne despre proiectul tău și îți vom aranja o consultație gratuită de 30 de minute pentru a discuta despre viziunea ta.",
+    "contactDetails": [
+      {
+        "label": "Email",
+        "value": "chereninterior@gmail.com"
+      },
+      {
+        "label": "Telefon",
+        "value": "+40 766 334 491"
+      },
+      {
+        "label": "Studio",
+        "value": "București"
+      }
+    ],
+    "quote": "Fiecare spațiu spune o poveste. Hai să scriem pe a ta.",
+    "form": {
+      "title": "Spune-ne despre proiectul tău",
+      "name": "Numele Tău *",
+      "email": "Adresa de Email *",
+      "phone": "Telefon",
+      "service": "Serviciu Dorit",
+      "servicePlaceholder": "Selectează un serviciu",
+      "serviceOptions": [
+        { "value": "Design Interior", "label": "Design Interior" },
+        { "value": "Vizualizare 3D", "label": "Vizualizare 3D" },
+        { "value": "Selecția Mobilierului", "label": "Selecția Mobilierului" },
+        { "value": "Soluție Turnkey", "label": "Soluție Turnkey" }
+      ],
+      "message": "Descrierea Proiectului *",
+      "messagePlaceholder": "Spune-ne despre spațiul tău, viziunea și calendarul...",
+      "submit": "Trimite Mesaj →",
+      "sending": "Se trimite…",
+      "sendAnother": "Trimite Altul",
+      "successTitle": "Mesaj Trimis",
+      "successText": "Mulțumim pentru mesaj. Vom analiza proiectul tău și te vom contacta în maximum 24 de ore.",
+      "error": "Ceva a mers greșit. Verifică conexiunea și încearcă din nou sau scrie-ne direct la",
+      "errorEmail": "hello@prydumano.design"
+    }
+  },
+  "footer": {
+    "brandTag": "Studio de Design",
+    "brandCopy": "O echipă de designeri de interior care creează spații care se simt la fel de bine precum arată.",
+    "links": {
+      "studio": ["Despre Noi", "Echipa Noastră"],
+      "services": [
+        "Design Interior",
+        "Vizualizare 3D",
+        "Selecția Mobilierului",
+        "Soluții Turnkey"
+      ]
+    },
+    "copyright": "© {{year}} Cheren's Interior. Toate drepturile rezervate."
+  },
+  "marquee": {
+    "text": "CHEREN'S INTERIOR  •  SPAȚII INTERIOARE  •  CONFORT PRIN DESIGN  •  STUDIO LVIV  •  CREAT CU GRIJĂ  •"
   }
 }

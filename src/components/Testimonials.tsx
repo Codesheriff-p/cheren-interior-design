@@ -2,54 +2,24 @@ import { useRef, useState } from "react";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useTranslation } from "react-i18next";
 
 gsap.registerPlugin(ScrollTrigger);
 
-type Testimonial = {
-  quote: string;
-  name: string;
-  project: string;
-  avatar: string;
-  initials?: string;
-};
-
-const TESTIMONIALS: Testimonial[] = [
-  {
-    quote:
-      "Cheren's Interior transformed our apartment completely. They listened to everything we wanted and delivered a home that feels like us — only better. The 3D renders were spot on; the real thing was even more beautiful.",
-    name: "Matei Cernat",
-    project: "Apartment redesign, 95 m²",
-    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop",
-    initials: "MC",
-  },
-  {
-    quote:
-      "Working with this studio was effortless. They handled all the contractors, kept us updated, and finished two weeks ahead of schedule. Our kitchen and living space is now the heart of our home.",
-    name: "Ana Voinea",
-    project: "Open-plan kitchen renovation",
-    avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop",
-    initials: "AV",
-  },
-  {
-    quote:
-      "I had a very specific vision and limited budget. The team found creative solutions at every turn. The result exceeds what I imagined was possible. Highly recommend for anyone who wants real expertise.",
-    name: "Bianca Rădulescu",
-    project: "Studio apartment, 42 m²",
-    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop",
-    initials: "BR",
-  },
-  {
-    quote:
-      "From the first meeting to final handover, Cheren's Interior was professional, creative, and a pleasure to work with. Our children's room is magical. They even sourced furniture we thought was out of our range.",
-    name: "David Munteanu",
-    project: "Children's room & master bedroom",
-    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop",
-    initials: "DM",
-  },
+const AVATARS = [
+  "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop",
+  "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop",
+  "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop",
+  "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop",
 ];
+const INITIALS = ["MC", "AV", "BR", "DM"];
 
 export default function Testimonials() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const { t } = useTranslation();
+  const testimonials = t("testimonials.items", {
+    returnObjects: true,
+  }) as Array<{ quote: string; name: string; project: string }>;
   const [active, setActive] = useState(0);
   const [imageError, setImageError] = useState<Set<number>>(new Set());
 
@@ -119,7 +89,7 @@ export default function Testimonials() {
                 color: "var(--color-gold)",
               }}
             >
-              Client Stories
+              {t("testimonials.tag")}
             </span>
             <span
               style={{
@@ -139,9 +109,11 @@ export default function Testimonials() {
               color: "var(--color-text)",
             }}
           >
-            Words from those
+            {t("testimonials.title")}
             <br />
-            <em style={{ color: "var(--color-gold)" }}>we've designed for</em>
+            <em style={{ color: "var(--color-gold)" }}>
+              {t("testimonials.titleHighlight")}
+            </em>
           </h2>
         </div>
 
@@ -154,7 +126,7 @@ export default function Testimonials() {
             gap: "24px",
           }}
         >
-          {TESTIMONIALS.map((t, i) => (
+          {testimonials.map((item, i) => (
             <div
               key={i}
               className="testimonials-card"
@@ -205,7 +177,7 @@ export default function Testimonials() {
                   flexGrow: 1,
                 }}
               >
-                {t.quote}
+                {item.quote}
               </p>
 
               <div
@@ -238,8 +210,8 @@ export default function Testimonials() {
                 >
                   {!imageError.has(i) && (
                     <img
-                      src={t.avatar}
-                      alt={t.name}
+                      src={AVATARS[i]}
+                      alt={item.name}
                       style={{
                         width: "100%",
                         height: "100%",
@@ -252,7 +224,7 @@ export default function Testimonials() {
                       loading="lazy"
                     />
                   )}
-                  {imageError.has(i) && <span>{t.initials}</span>}
+                  {imageError.has(i) && <span>{INITIALS[i]}</span>}
                 </div>
                 <div>
                   <p
@@ -263,7 +235,7 @@ export default function Testimonials() {
                       color: "var(--color-text)",
                     }}
                   >
-                    {t.name}
+                    {item.name}
                   </p>
                   <p
                     style={{
@@ -274,7 +246,7 @@ export default function Testimonials() {
                       marginTop: "2px",
                     }}
                   >
-                    {t.project}
+                    {item.project}
                   </p>
                 </div>
               </div>

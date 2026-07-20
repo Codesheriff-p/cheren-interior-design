@@ -2,16 +2,18 @@ import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useTranslation } from "react-i18next";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const STATS = [
-  { value: 10, suffix: "+", label: "Projects Completed" },
-  { value: 1, suffix: " year", label: "Years of Experience" },
+  { value: 10, suffix: "+" },
+  { value: 1, suffix: " year" },
 ];
 
 export default function About() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const { t } = useTranslation();
 
   useGSAP(
     () => {
@@ -143,7 +145,7 @@ export default function About() {
               color: "var(--color-gold)",
             }}
           >
-            About the Studio
+            {t("about.tag")}
           </span>
         </div>
 
@@ -157,12 +159,14 @@ export default function About() {
             color: "var(--color-text)",
           }}
         >
-          Design with{" "}
-          <em style={{ color: "var(--color-gold)", fontStyle: "italic" }}>
-            {" "}
-            purpose{" "}
-          </em>{" "}
-          and precision.
+          {t("about.heading")
+            .split(" ")
+            .map((word, i, arr) => (
+              <span key={i}>
+                {word}
+                {i < arr.length - 1 ? " " : ""}
+              </span>
+            ))}
         </h2>
 
         <div
@@ -177,8 +181,7 @@ export default function About() {
               color: "var(--color-text-muted)",
             }}
           >
-            At Cheren's Interior we've been shaping homes and commercial spaces
-            that feel as good as they look. Every project begins with listening.
+            {t("about.paragraph1")}
           </p>
           <p
             style={{
@@ -188,10 +191,7 @@ export default function About() {
               color: "var(--color-text-muted)",
             }}
           >
-            We believe great design is invisible — it simply makes living
-            easier, warmer, and more meaningful. Our studio handles every step:
-            from initial concept and 3D visualization to furniture sourcing and
-            final installation.
+            {t("about.paragraph2")}
           </p>
         </div>
 
@@ -236,7 +236,9 @@ export default function About() {
                   color: "var(--color-text-muted)",
                 }}
               >
-                {stat.label}
+                {i === 0
+                  ? t("about.stats.projectsCompleted")
+                  : t("about.stats.yearsOfExperience")}
               </p>
             </div>
           ))}

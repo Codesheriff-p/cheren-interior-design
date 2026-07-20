@@ -2,38 +2,20 @@ import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useTranslation } from "react-i18next";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const STEPS = [
-  {
-    num: "01",
-    title: "Discovery",
-    duration: "1–2 days",
-    desc: "We meet to understand your lifestyle, preferences, and goals. We review the space, take measurements, and define the project scope and budget.",
-  },
-  {
-    num: "02",
-    title: "Concept & Design",
-    duration: "2–3 weeks",
-    desc: "Our team develops two or three distinct concept directions. We present mood boards, material palettes, and preliminary layouts for your feedback.",
-  },
-  {
-    num: "03",
-    title: "3D Visualization",
-    duration: "1–2 weeks",
-    desc: "Photorealistic renders of the approved concept let you experience the space before any works begin. Revisions until you love every corner.",
-  },
-  {
-    num: "04",
-    title: "Execution & Handover",
-    duration: "4–12 weeks",
-    desc: "We manage all contractors, deliveries, and installations. You receive a complete, move-in-ready space with our after-project support guarantee.",
-  },
-];
+const STEPS = [{ num: "01" }, { num: "02" }, { num: "03" }, { num: "04" }];
 
 export default function Process() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const { t } = useTranslation();
+  const processSteps = t("process.steps", { returnObjects: true }) as Array<{
+    title: string;
+    duration: string;
+    desc: string;
+  }>;
 
   useGSAP(
     () => {
@@ -133,7 +115,7 @@ export default function Process() {
                   color: "var(--color-gold)",
                 }}
               >
-                How We Work
+                {t("process.tag")}
               </span>
             </div>
             <h2
@@ -145,7 +127,9 @@ export default function Process() {
                 color: "var(--color-text)",
               }}
             >
-              Our <em style={{ color: "var(--color-gold)" }}>Process</em>
+              <em style={{ color: "var(--color-gold)" }}>
+                {t("process.title")}
+              </em>
             </h2>
             <p
               style={{
@@ -156,8 +140,7 @@ export default function Process() {
                 maxWidth: "700px",
               }}
             >
-              A transparent, collaborative process designed to deliver
-              exceptional results on time and within budget.
+              {t("process.intro")}
             </p>
           </div>
         </div>
@@ -262,7 +245,7 @@ export default function Process() {
                         lineHeight: 1,
                       }}
                     >
-                      {step.title}
+                      {processSteps[i]?.title ?? step.num}
                     </h3>
                     <span
                       style={{
@@ -276,7 +259,7 @@ export default function Process() {
                         whiteSpace: "nowrap",
                       }}
                     >
-                      {step.duration}
+                      {processSteps[i]?.duration ?? ""}
                     </span>
                   </div>
                   <p
@@ -287,7 +270,7 @@ export default function Process() {
                       color: "var(--color-text-muted)",
                     }}
                   >
-                    {step.desc}
+                    {processSteps[i]?.desc ?? ""}
                   </p>
                 </div>
               </div>

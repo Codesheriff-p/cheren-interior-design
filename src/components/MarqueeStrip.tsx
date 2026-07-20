@@ -1,9 +1,7 @@
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
-
-const TEXT =
-  "CHEREN'S INTERIOR  •  INTERIOR SPACES  •  COMFORT BY DESIGN  •  LVIV STUDIO  •  CRAFTED WITH CARE  •  ";
+import { useTranslation } from "react-i18next";
 
 const spanStyle: React.CSSProperties = {
   fontFamily: "var(--font-display)",
@@ -17,6 +15,8 @@ const spanStyle: React.CSSProperties = {
 
 export default function MarqueeStrip() {
   const trackRef = useRef<HTMLDivElement>(null);
+  const { t } = useTranslation();
+  const text = t("marquee.text");
 
   useGSAP(
     () => {
@@ -46,9 +46,9 @@ export default function MarqueeStrip() {
       {/* Two identical spans — at xPercent:-50 we've moved exactly one span,
           the visual loops back to the start seamlessly */}
       <div ref={trackRef} style={{ display: "flex", width: "max-content" }}>
-        <span style={spanStyle}>{TEXT}</span>
+        <span style={spanStyle}>{text}</span>
         <span style={spanStyle} aria-hidden="true">
-          {TEXT}
+          {text}
         </span>
       </div>
     </div>

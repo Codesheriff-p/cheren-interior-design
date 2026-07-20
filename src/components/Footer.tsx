@@ -1,16 +1,12 @@
+import { useTranslation } from "react-i18next";
 import logo from "../assets/logo.png";
 
-const FOOTER_LINKS = {
-  Studio: ["About Us", "Our Team"],
-  Services: [
-    "Interior Design",
-    "3D Visualization",
-    "Furniture Selection",
-    "Turnkey Solutions",
-  ],
-};
-
 export default function Footer() {
+  const { t } = useTranslation();
+  const footerLinks = {
+    studio: t("footer.links.studio", { returnObjects: true }) as string[],
+    services: t("footer.links.services", { returnObjects: true }) as string[],
+  };
   return (
     <footer
       style={{
@@ -52,7 +48,7 @@ export default function Footer() {
                 color: "var(--color-gold)",
               }}
             >
-              Design Studio
+              {t("footer.brandTag")}
             </p>
           </div>
 
@@ -65,13 +61,12 @@ export default function Footer() {
               maxWidth: "300px",
             }}
           >
-            A team of interior designers creating spaces that feel as good as
-            they look.
+            {t("footer.brandCopy")}
           </p>
         </div>
 
         {/* Link columns */}
-        {Object.entries(FOOTER_LINKS).map(([title, links]) => (
+        {Object.entries(footerLinks).map(([title, links]) => (
           <div
             key={title}
             style={{ display: "flex", flexDirection: "column", gap: "20px" }}
@@ -86,7 +81,7 @@ export default function Footer() {
                 marginBottom: "4px",
               }}
             >
-              {title}
+              {title === "studio" ? "Studio" : "Services"}
             </h4>
             {links.map((link) => (
               <a
@@ -129,7 +124,7 @@ export default function Footer() {
             letterSpacing: "0.04em",
           }}
         >
-          © {new Date().getFullYear()} Cheren's Interior. All rights reserved.
+          {t("footer.copyright", { year: new Date().getFullYear() })}
         </p>
       </div>
 
