@@ -525,27 +525,57 @@ export default function Contact() {
                   >
                     {t("contact.form.service")}
                   </label>
-                  <select
-                    className="form-input"
-                    value={form.service}
-                    onChange={(e) =>
-                      setForm({ ...form, service: e.target.value })
-                    }
-                    style={{ cursor: "pointer", background: "transparent" }}
-                  >
-                    <option value="" style={{ background: "#161412" }}>
-                      {t("contact.form.servicePlaceholder")}
-                    </option>
-                    {serviceOptions.map((option) => (
-                      <option
-                        key={option.value}
-                        value={option.value}
-                        style={{ background: "#161412" }}
-                      >
-                        {option.label}
+                  <div style={{ position: "relative" }}>
+                    <select
+                      className="form-input"
+                      value={form.service}
+                      onChange={(e) =>
+                        setForm({ ...form, service: e.target.value })
+                      }
+                      style={{
+                        cursor: "pointer",
+                        background: "transparent",
+                        appearance: "none",
+                        WebkitAppearance: "none",
+                        paddingRight: "28px",
+                      }}
+                    >
+                      <option value="" style={{ background: "#161412" }}>
+                        {t("contact.form.servicePlaceholder")}
                       </option>
-                    ))}
-                  </select>
+                      {serviceOptions.map((option) => (
+                        <option
+                          key={option.value}
+                          value={option.value}
+                          style={{ background: "#161412" }}
+                        >
+                          {option.label}
+                        </option>
+                      ))}
+                    </select>
+                    <svg
+                      viewBox="0 0 20 20"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      style={{
+                        position: "absolute",
+                        right: "0",
+                        top: "50%",
+                        transform: "translateY(-50%)",
+                        width: "16px",
+                        height: "16px",
+                        pointerEvents: "none",
+                        color: "var(--color-text-muted)",
+                      }}
+                    >
+                      <path
+                        d="M5 7l5 6 5-6"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </div>
                 </div>
               </div>
 
